@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css.css">
+
+    <title>Bot net</title>
+</head>
+<body>
+    <div id="conteudo">
+        <h1>Cimulador de Braço Robótico</h1>
+        <p>Para realizar a cimulação será necessario a seleção de qual de qual junção você desja mexer:</p>
+        <form id="loginForm">
+           <div class="lado">
+            <label aria-placeholder="Digite seu email" for="A">Join A:</label>
+            <input type="checkbox" id="A" name="A" value="A">
+            <br>
+            <label aria-placeholder="Digite seu email" for="B">Join B:</label>
+            <input type="checkbox" id="B" name="B" value="B">
+            <br>
+            <label aria-placeholder="Digite sua senha" for="C">Join C:</label>
+            <input type="checkbox" id="C" name="C" value="C">
+            <br><br>
+           </div>
+           <br>
+           <div id="input_box">
+            <div>
+                <label>Join A</label>
+                <div class="lado">
+                    <label for="JA_X">X</label>
+                    <input class="input_box" type="number" name="JA_X" id="JA_X" max="116" min="-62">
+                    <label for="JA_Y">Y</label>
+                    <input class="input_box" type="number" name="JA_Y" id="JA_Y" max="21" min="-18">
+                    <label for="JA_Z">Z</label>
+                    <input class="input_box" type="number" name="JA_Z" id="JA_Z" max="15" min="-15">
+                </div>
+            </div>
+           </div>
+           <br>
+            <input class="button" type="submit" value="Confirmar">
+        </form>
+    </div>
+</body>
+</html>
