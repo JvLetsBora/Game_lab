@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://robo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://main.gd" type="Script" id=2]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="main" type="Spatial"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
+
+[node name="textos" type="Spatial" parent="CanvasLayer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -2.299, 1.31848, -0.66963 )
+
+[node name="JA" type="Label3D" parent="CanvasLayer/textos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.32333, 0.278705, -2.92184 )
+pixel_size = 0.02
+modulate = Color( 0.14902, 0.145098, 0.87451, 1 )
+text = "A"
+
+[node name="JB" type="Label3D" parent="CanvasLayer/textos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88204, -0.478443, -2.92184 )
+pixel_size = 0.02
+modulate = Color( 0.14902, 0.145098, 0.87451, 1 )
+text = "B"
+
+[node name="JC" type="Label3D" parent="CanvasLayer/textos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84953, -1.35636, -2.92184 )
+pixel_size = 0.02
+modulate = Color( 0.14902, 0.145098, 0.87451, 1 )
+text = "C"
+
+[node name="A" type="Label3D" parent="CanvasLayer/textos"]
+text = "JoinA: "
+
+[node name="B" type="Label3D" parent="CanvasLayer/textos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0 )
+text = "JoinB: "
+
+[node name="C" type="Label3D" parent="CanvasLayer/textos"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
+text = "JoinC:"
+
+[node name="Camera" type="Camera" parent="CanvasLayer"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.60337 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CanvasLayer"]
+transform = Transform( 5.84153, 0, 0, 0, 0.040161, 0, 0, 0, 5.24246, 0.0353642, -0.632559, -4.50809 )
+mesh = SubResource( 1 )
+skeleton = NodePath("../..")
+
+[node name="robo" parent="CanvasLayer" instance=ExtResource( 1 )]
+transform = Transform( 0.124717, 0, -0.484196, 0, 0.5, 0, 0.484196, 0, 0.124717, 0.0772552, -0.543723, -4.08731 )
+
+[node name="HTTPRequest" type="HTTPRequest" parent="CanvasLayer"]
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[connection signal="timeout" from="CanvasLayer/Timer" to="CanvasLayer" method="_on_Timer_timeout"]
