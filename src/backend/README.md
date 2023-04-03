@@ -11,7 +11,7 @@ O objetivo deste projeto é conceber e implementar um protótipo de Simulador de
 
 ## Banco de Dados
 
-<a href= "https://www.inteli.edu.br/"><img src="///DB.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0" width="30%"></a>
+<a href= "https://www.inteli.edu.br/"><img style="width:300px;" src="../../DB.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0" width="30%"></a>
 
 
 ## Rotas
