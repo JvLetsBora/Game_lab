@@ -6,8 +6,8 @@
 </table>
 
 
-# Concepção de sistema de automação industrial
-O propósito deste repositório é proporcionar espaço de armazenamento e ferramentas para o controle de versões de todos documentos do projeto realizado durante o módulo 5 do curso de [Engenharia de Computação do Inteli](https://www.inteli.edu.br/engenharia-da-computacao/). O objetivo deste projeto é conceber e implementar um protótipo de um sistema de automação industrial, integrando módulos discretos implementados utilizando dispositivos microcontrolados a manipuladores robóticos antropomórficos.
+# Simulador de Braço Robótico 
+O objetivo deste projeto é conceber e implementar um protótipo de Simulador de Braço Robótico, integrando a um motor gráfico(GODOT) uma API.
 
 ## Estrutura do projeto
 
@@ -27,6 +27,7 @@ Abaixo encontra-se a árvore de pastas do repositório:
 ```
 
 Os principais diretórios do repositório são: 
-- A pasta [docs](./docs), onde encontram-se os documentos de entrega do projeto. Aqui devem ficar o infográfico do usuário e o relatório de projeto.
-- A pasta [media](./media) serve para inserir fotos e vídeos do protótipo, assim como do seu processo de construção.
-- A pasta [src](./src) abriga todos os arquivos de desenvolvimento do projeto. Aqui deve ficar o código-fonte do projeto, assim como o projeto dos circuitos eletrônicos embarcados em cada módulo.
+- A pasta [backend](./backend), onde encontram-se o app principal, responsável pela API.
+- A pasta [templates](./backend/templates), onde encontram-se um template de frontend. 
+- A pasta [braco_http](./braco_http), armaze todas as depedências responsaveis pela simulação, que inclui: modelo 3D, assets, objetos e o aquivo principal .godot.
+- A pasta [src](./src) abriga todos os arquivos de desenvolvimento do projeto.
