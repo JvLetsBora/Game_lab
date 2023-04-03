@@ -9,6 +9,11 @@
 # Desenvolvimento da API
 O objetivo deste projeto é conceber e implementar um protótipo de Simulador de Braço Robótico, integrando a um motor gráfico(GODOT) uma API.
 
+## Banco de Dados
+
+<a href= "https://www.inteli.edu.br/"><img src="././src" alt="Inteli - Instituto de Tecnologia e Liderança" border="0" width="30%"></a>
+
+
 ## Rotas
 
 ### 127.0.0.1:5000/
