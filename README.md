@@ -27,7 +27,7 @@ Abaixo encontra-se a árvore de pastas do repositório:
 ```
 
 Os principais diretórios do repositório são: 
-- A pasta [backend](./backend), onde encontram-se o app principal, responsável pela API.
-- A pasta [templates](./backend/templates), onde encontram-se um template de frontend. 
-- A pasta [braco_http](./braco_http), armazena todas as depedências responsaveis pela simulação, que inclui: modelo 3D, assets, objetos e o aquivo principal (.godot).
+- A pasta [backend](./src/backend), onde encontram-se o app principal, responsável pela API.
+- A pasta [templates](./src/backend/templates), onde encontram-se um template de frontend. 
+- A pasta [braco_http](./src/braco_http), armazena todas as depedências responsaveis pela simulação, que inclui: modelo 3D, assets, objetos e o aquivo principal (.godot).
 - A pasta [src](./src) abriga todos os arquivos de desenvolvimento do projeto.
