@@ -16,5 +16,5 @@ func _on_request_completed(result, response_code, headers, body):
 
 func _on_Timer_timeout():
 	if $robo.fim == true:
-		$HTTPRequest.request("https://pscmkc-5000.csb.app/books")
+		$HTTPRequest.request("https://7yc0jq-5000.csb.app/posicao")
 

@@ -71,9 +71,7 @@ def get_posicao():
     obj = session.query(Action).order_by(Action.id.desc()).first()
     respota = {
         "join": obj.__dict__["join"],
-        "x": obj.__dict__["x"],
-        "y": obj.__dict__["y"],
-        "z": obj.__dict__["z"]
+        "posicoes": [obj.__dict__["x"], obj.__dict__["y"], obj.__dict__["z"]]
     }
     return respota, 200
 
@@ -89,17 +87,6 @@ def get_posicoes():
             "z": u.__dict__["z"]
         })
     return resposta
-
-
-@app.route('/robot/add', methods=['POST', 'GET'])
-def add_posicao():
-    data = request.get_json()
-    test = {
-        "join": data.join,
-        "posicoes": data.posicoes
-    }
-    tests.append(test)
-    return jsonify(test), 201
 
 
 if __name__ == '__main__':
