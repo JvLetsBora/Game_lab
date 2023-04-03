@@ -58,9 +58,10 @@ func _process(delta):
 	if join == "A":
 		$ant_base/ant_arm2/arm.rotation_degrees = Vector3(a,b,c)
 		if a >= p[0] and b >= p[1] and c >= p[2]:
-			 a = p[0]
-			 b = p[1]
-			 c = p[2]
+			 print(a-p[0])
+			 #a = p[0]
+			 #b = p[1]
+			 #c = p[2]
 			 set_process(false)
 			 fim = true
 	
