@@ -6,25 +6,16 @@
 </table>
 
 
-# Simulador de Braço Robótico 
+# Desenvolvimento da API
 O objetivo deste projeto é conceber e implementar um protótipo de Simulador de Braço Robótico, integrando a um motor gráfico(GODOT) uma API.
 
-## Estrutura do projeto
+## Rotas
 
-Abaixo encontra-se a árvore de pastas do repositório:
+### 127.0.0.1:5000/
 
-``` bash
-.
-├── LICENSE
-├── README.md
-└── src
-    ├── backend
-    │   └── README.md
-        └── templates
-    ├── braco_http
-        └── README.md
-        └── robo_assets
-```
+### 127.0.0.1:5000/posicoes
+
+### 127.0.0.1:5000/posicao
 
 Os principais diretórios do repositório são: 
 - A pasta [backend](./src/backend), onde encontram-se o app principal, responsável pela API.
