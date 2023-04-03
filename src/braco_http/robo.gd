@@ -29,42 +29,82 @@ func _process(delta):
 		sentidoC = 1
 	else:
 		sentidoC = -1
-	
-	if a != p[0]:
-		a += (velocidade*delta)*sentidoA
-	if b != p[1]:
-		b += (velocidade*delta)*sentidoB
-	if c != p[2]:
-		c += (velocidade*delta)*sentidoC
+
+	a += (velocidade*delta)*sentidoA
+	b += (velocidade*delta)*sentidoB
+	c += (velocidade*delta)*sentidoC
 	
 	if join == "C":
+		if a == p[0] and b == p[1] and c == p[2]:
+			set_process(false)
+			fim = true
 		$ant_base.rotation_degrees = Vector3(a,b,c)
-		if a >= p[0] and b >= p[1] and c >= p[2]:
-			 a = p[0]
-			 b = p[1]
-			 c = p[2]
-			 set_process(false)
-			 fim = true
+		if sentidoA > 0:
+			if (a-p[0]) >= 0:
+				a = p[0]
+		else:
+			if (p[0]-a) >= 0:
+				a = p[0]
+		if sentidoB >0:
+			if (b-p[1]) >= 0:
+				b = p[1]
+		else:
+			if (p[1]-b) >= 0:
+				b = p[1]
+		if sentidoC >=0:
+			if (c -p[2]) >= 0:
+				c = p[2]
+		else:
+			if (p[2]-c) >= 0:
+				c = p[2]
 
 	if join == "B":
+		if a == p[0] and b == p[1] and c == p[2]:
+			set_process(false)
+			fim = true
 		$ant_base/ant_arm2.rotation_degrees = Vector3(a,b,c)
-		if a >= p[0] and b >= p[1] and c >= p[2]:
-			 a = p[0]
-			 b = p[1]
-			 c = p[2]
-			 set_process(false)
-			 fim = true
+		if sentidoA > 0:
+			if (a-p[0]) >= 0:
+				a = p[0]
+		else:
+			if (p[0]-a) >= 0:
+				a = p[0]
+		if sentidoB >0:
+			if (b-p[1]) >= 0:
+				b = p[1]
+		else:
+			if (p[1]-b) >= 0:
+				b = p[1]
+		if sentidoC >=0:
+			if (c -p[2]) >= 0:
+				c = p[2]
+		else:
+			if (p[2]-c) >= 0:
+				c = p[2]
 
 	if join == "A":
+		if a == p[0] and b == p[1] and c == p[2]:
+			set_process(false)
+			fim = true
 		$ant_base/ant_arm2/arm.rotation_degrees = Vector3(a,b,c)
-		if a >= p[0] and b >= p[1] and c >= p[2]:
-			 print(a-p[0])
-			 #a = p[0]
-			 #b = p[1]
-			 #c = p[2]
-			 set_process(false)
-			 fim = true
-	
+		if sentidoA > 0:
+			if (a-p[0]) >= 0:
+				a = p[0]
+		else:
+			if (p[0]-a) >= 0:
+				a = p[0]
+		if sentidoB >0:
+			if (b-p[1]) >= 0:
+				b = p[1]
+		else:
+			if (p[1]-b) >= 0:
+				b = p[1]
+		if sentidoC >=0:
+			if (c -p[2]) >= 0:
+				c = p[2]
+		else:
+			if (p[2]-c) >= 0:
+				c = p[2]
 
 func move_to(j,posicao):
 	join = j

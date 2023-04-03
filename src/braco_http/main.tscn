@@ -33,14 +33,19 @@ text = "C"
 
 [node name="A" type="Label3D" parent="CanvasLayer/textos"]
 text = "JoinA: "
+horizontal_alignment = 0
+vertical_alignment = 0
 
 [node name="B" type="Label3D" parent="CanvasLayer/textos"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.3, 0 )
 text = "JoinB: "
+horizontal_alignment = 0
+vertical_alignment = 0
 
 [node name="C" type="Label3D" parent="CanvasLayer/textos"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.6, 0 )
 text = "JoinC:"
+horizontal_alignment = 0
 
 [node name="Camera" type="Camera" parent="CanvasLayer"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.60337 )

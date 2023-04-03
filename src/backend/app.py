@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request, render_template
+from flask import Flask, request, render_template
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -9,8 +9,6 @@ session = Session()
 
 
 Base = declarative_base()
-
-Base.metadata.create_all(engine)
 
 
 class Action(Base):
@@ -27,7 +25,7 @@ class Action(Base):
 
 
 app = Flask(__name__)
-
+Base.metadata.create_all(engine)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
