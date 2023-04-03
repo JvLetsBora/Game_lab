@@ -17,25 +17,13 @@ Abaixo encontra-se a árvore de pastas do repositório:
 .
 ├── LICENSE
 ├── README.md
-├── docs
-│   ├── README.md
-│   ├── _config.yml
-│   ├── img
-│   │   ├── relatorio
-│   │   └── tutoriais
-|   ├── infografico
-│   │   └── infografico.pdf
-│   └── index.md
-├── media
-│   └── README.md
 └── src
-    ├── README.md
     ├── backend
     │   └── README.md
-    ├── embedded
-    │   └── README.md
-    └── frontend
+        └── templates
+    ├── braco_http
         └── README.md
+        └── robo_assets
 ```
 
 Os principais diretórios do repositório são: 
