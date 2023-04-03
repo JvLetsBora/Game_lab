@@ -1,17 +1,55 @@
 extends Spatial
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.ve_to(a)
+var a = 0
+var b = 0
+var c = 0
+var velocidade = 200
+var join = ""
+var p 
 
+export var fim = false
+
+func _process(delta):
+	if a <= p[0]:
+		a += velocidade*delta
+	if b <= p[1]:
+		b += velocidade*delta
+	if c <= p[2]:
+		c += velocidade*delta
+	
+	if join == "C":
+		$ant_base.rotation_degrees = Vector3(a,b,c)
+		if a >= p[0] and b >= p[1] and c >= p[2]:
+			 a = 0
+			 b = 0
+			 c = 0
+			 set_process(false)
+			 fim = true
+
+	if join == "B":
+		$ant_base/ant_arm2.rotation_degrees = Vector3(a,b,c)
+		if a >= p[0] and b >= p[1] and c >= p[2]:
+			 a = 0
+			 b = 0
+			 c = 0
+			 set_process(false)
+			 fim = true
+
+	if join == "A":
+		$ant_base/ant_arm2/arm.rotation_degrees = Vector3(a,b,c)
+		if a >= p[0] and b >= p[1] and c >= p[2]:
+			 a = 0
+			 b = 0
+			 c = 0
+			 set_process(false)
+			 fim = true
+	
 
 func move_to(j,posicao):
-	if j == "C":
-		if (posicao[0] < 21 and posicao[0] > -21) and (posicao[2]  < 15 and posicao[2]  > -15):
-			$ant_base.rotation_degrees = Vector3(posicao[0],0,posicao[2])
+	join = j
+	p = posicao
+	set_process(true)
 	
-	if j == "B":
-		if (posicao[0] < 120 and posicao[0] > -92) and (posicao[1] < 10 and posicao[1] > -10) and (posicao[2]  < 8 and posicao[2]  > -8):
-			$ant_base/ant_arm2.rotation_degrees = Vector3(posicao[0],posicao[1],posicao[2])
-	
-	if j == "A":
-		if (posicao[0] < 116 and posicao[0] > -62) and (posicao[1] < 21 and posicao[1] > -18) and (posicao[2] < 15 and posicao[2]  > -15):
-			$ant_base/ant_arm2/arm.rotation_degrees = Vector3(posicao[0],posicao[1],posicao[2])
+
+

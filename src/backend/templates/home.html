@@ -1,0 +1,76 @@
+{%block title%}<h1>Bot Net</h1>{%endblock%}
+
+{% block content %}
+<h3>Salve!</h3>
+<p>Selecione a baixo o join que desja molver e digite a cordenada desejada</p>
+<h1>Cimulador de Braço Robótico</h1>
+
+<form style="display: flex; flex-direction: column; max-width: 150px;" action="#" method="post">
+    <p>
+        <label for="join">Selecione o Join:</label>
+        <select name="join" type="text">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+        </select>
+    </p>
+    <p><label for="x">X:</label>
+    <input  type="number" name="x" max="200" min="-62"></p>
+    <p><label for="y">Y:</label>
+    <input  type="number" name="y" max="30" min="-18"></p>
+    <p><label for="z">Z:</label>
+    <input  type="number" name="z"max="15" min="-15"></p>
+    <input type="submit" value="submit">
+</form>
+<br>
+<h1>Ultimas coordenadas</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Join</th>
+          <th>X</th>
+          <th>Y</th>
+          <th>Z</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-dados">
+      </tbody>
+    </table>
+
+    <script>
+      // Define a URL da API a ser consultada
+      const url = 'https://7yc0jq-5000.csb.app/posicoes';
+
+      // Realiza uma requisição GET para a API
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          // Cria uma linha na tabela para cada objeto retornado pela API
+          data.forEach(user => {
+            const tr = document.createElement('tr');
+            const td_x = document.createElement('td');
+            const td_y = document.createElement('td');
+            const td_z = document.createElement('td');
+            const tdJoin = document.createElement('td');
+
+            tdJoin.textContent = user.join;
+            td_x.textContent = user.x;
+            td_y.textContent = user.y;
+            td_z.textContent = user.z;
+            
+            tr.appendChild(tdJoin);
+            tr.appendChild(td_x);
+            tr.appendChild(td_y);
+            tr.appendChild(td_z);
+
+
+            document.getElementById('tabela-dados').appendChild(tr);
+          });
+        })
+        .catch(error => {
+          console.error(error);
+        });
+    </script>
+
+
+{% endblock %}
