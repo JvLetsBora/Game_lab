@@ -123,9 +123,11 @@ func _process(delta):
 			$Nave.direcaoD = 1
 
 
+
 			
 		if(Input.is_action_pressed("ui_left") or _e == true):
 			$Nave.direcaoE = -1
+			
 
 
 
@@ -224,6 +226,7 @@ func _on_HUD_gui_input(event):
 #			_e = true
 	if (event is InputEventScreenTouch):
 		if (event.pressed == true):
+			$Nave.tempo = 0
 			if (btn == false):
 				_e = true
 				_d = false

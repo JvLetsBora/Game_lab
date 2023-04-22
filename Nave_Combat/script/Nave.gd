@@ -31,7 +31,7 @@ var direcao = 0
 export var direcaoD = 0
 export var direcaoE = 0
 signal tiro
-
+export var tempo = 0
 
 func _ready():
 	
@@ -77,8 +77,9 @@ func _ready():
 	$AnimatedSprite.animation = "parada"
 
 func _process(delta):
+	#(get_viewport().size.x/2)/360
 	frame = $AnimatedSprite.frame
-#	print(coeficiente)
+
 	if(Global.Jogo_on == true):
 		direcao = direcaoE+direcaoD
 		if(direcao > 0 and position.x < limites_e):
@@ -86,8 +87,9 @@ func _process(delta):
 				coeficiente -= (coeficiente)*delta
 				
 			$AnimatedSprite.animation = "andandoD"
-			
 			position.x += (velocidade*delta*esquiva)*direcao
+
+			rotation_degrees += tempo*delta
 			if(position.y < 720):position.y += esquiva
 		
 		if(direcao < 0 and  position.x > limites_d):
@@ -95,8 +97,8 @@ func _process(delta):
 				coeficiente -= (coeficiente)*delta
 				
 			$AnimatedSprite.animation = "andandoE"
-			
 			position.x += (velocidade*delta*esquiva)*direcao
+			rotation_degrees -= tempo*delta
 			if(position.y < 720):position.y += esquiva
 		
 		if(direcao == 0 or position.x <= limites_d or position.x >= limites_e):
