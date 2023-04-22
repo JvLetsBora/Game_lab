@@ -25,10 +25,13 @@ export var velocidade = 600
 export var esquiva = 1
 export var coeficiente = 0
 export var frame = 0
+onready var limites_d =  - 76
+onready var limites_e = get_viewport().size.x + 76
 var direcao = 0
 export var direcaoD = 0
 export var direcaoE = 0
 signal tiro
+
 
 func _ready():
 	
@@ -78,27 +81,29 @@ func _process(delta):
 #	print(coeficiente)
 	if(Global.Jogo_on == true):
 		direcao = direcaoE+direcaoD
-		if(direcao > 0 and position.x < 558):
+		if(direcao > 0 and position.x < limites_e):
 			if(coeficiente > 0.5):
 				coeficiente -= (coeficiente)*delta
 				
 			$AnimatedSprite.animation = "andandoD"
+			
 			position.x += (velocidade*delta*esquiva)*direcao
 			if(position.y < 720):position.y += esquiva
 		
-		if(direcao < 0 and  position.x > 60):
+		if(direcao < 0 and  position.x > limites_d):
 			if(coeficiente > 0.5):
 				coeficiente -= (coeficiente)*delta
 				
 			$AnimatedSprite.animation = "andandoE"
+			
 			position.x += (velocidade*delta*esquiva)*direcao
 			if(position.y < 720):position.y += esquiva
 		
-		if(direcao == 0 or position.x <= 60 or position.x >= 558):
+		if(direcao == 0 or position.x <= limites_d or position.x >= limites_e):
 			if coeficiente < vel_limite or coeficiente < vel_limite*1.3 and position.y <= 330:
 				coeficiente += (delta/2)
-			#direcaoE = 0
-			#direcaoD = 0
+			direcaoE = 0
+			direcaoD = 0
 			if(position.y > 320):
 				position.y -= 1+coeficiente
 			

@@ -170,7 +170,7 @@ text = "Salve2"
 position = Vector2( -21, 6 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 11 )
-frame = 2
+frame = 5
 playing = true
 
 [node name="Meteoro" parent="." instance=ExtResource( 5 )]
