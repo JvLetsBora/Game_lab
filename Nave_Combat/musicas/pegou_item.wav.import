@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/pegou_item.wav-dfa508b1326c43ddb168984957c0880f.sample"
+
+[deps]
+
+source_file="res://musicas/pegou_item.wav"
+dest_files=[ "res://.import/pegou_item.wav-dfa508b1326c43ddb168984957c0880f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

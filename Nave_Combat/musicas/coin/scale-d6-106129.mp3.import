@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/scale-d6-106129.mp3-c294960292268ca13fd3c41cb9fa9ac4.mp3str"
+
+[deps]
+
+source_file="res://musicas/coin/scale-d6-106129.mp3"
+dest_files=[ "res://.import/scale-d6-106129.mp3-c294960292268ca13fd3c41cb9fa9ac4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

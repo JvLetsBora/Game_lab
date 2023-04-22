@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/on_play (online-audio-converter.com).wav-d9fc9e52d238ec5839530999314f5f31.sample"
+
+[deps]
+
+source_file="res://musicas/on_play (online-audio-converter.com).wav"
+dest_files=[ "res://.import/on_play (online-audio-converter.com).wav-d9fc9e52d238ec5839530999314f5f31.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

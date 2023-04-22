@@ -1,0 +1,234 @@
+[gd_scene load_steps=37 format=2]
+
+[ext_resource path="res://script/main.gd" type="Script" id=1]
+[ext_resource path="res://grafica/skay.jpg" type="Texture" id=2]
+[ext_resource path="res://prefebs/Nave.tscn" type="PackedScene" id=3]
+[ext_resource path="res://grafica/coin.png" type="Texture" id=4]
+[ext_resource path="res://prefebs/Meteoro.tscn" type="PackedScene" id=5]
+[ext_resource path="res://prefebs/Paredes.tscn" type="PackedScene" id=6]
+[ext_resource path="res://grafica/skay2.png" type="Texture" id=7]
+[ext_resource path="res://grafica/up.png" type="Texture" id=8]
+[ext_resource path="res://grafica/Down.png" type="Texture" id=9]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame10.png" type="Texture" id=12]
+[ext_resource path="res://font/dirtyoldtown.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://grafica/menu.png" type="Texture" id=15]
+[ext_resource path="res://musicas/rip_hop_raiva_Arms_Dealer (online-audio-converter.com).wav" type="AudioStream" id=16]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame02.png" type="Texture" id=17]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame09.png" type="Texture" id=18]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame05.png" type="Texture" id=19]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame00.png" type="Texture" id=20]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame07.png" type="Texture" id=21]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame08.png" type="Texture" id=22]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame01.png" type="Texture" id=23]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame04.png" type="Texture" id=24]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame06.png" type="Texture" id=25]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame11.png" type="Texture" id=26]
+[ext_resource path="res://grafica/Eventos/GoldenTime/Frame03.png" type="Texture" id=27]
+[ext_resource path="res://grafica/skay3.png" type="Texture" id=28]
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 20 ), ExtResource( 23 ), ExtResource( 17 ), ExtResource( 27 ), ExtResource( 24 ), ExtResource( 19 ), ExtResource( 25 ), ExtResource( 21 ), ExtResource( 22 ), ExtResource( 18 ), ExtResource( 12 ), ExtResource( 26 ) ],
+"loop": true,
+"name": "timeGold",
+"speed": 6.0
+} ]
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://font/dirtyoldtown.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 18
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 18
+font_data = ExtResource( 13 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 40, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 80, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 120, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 160, 0, 40, 40 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 200, 0, 40, 40 )
+
+[sub_resource type="SpriteFrames" id=11]
+animations = [ {
+"frames": [ SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
+} ]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -7.0
+margin_right = 2.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true,
+"_edit_vertical_guides_": [ 195.0, 39.0, 568.0 ]
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.517647 )
+position = Vector2( 310, 514.5 )
+scale = Vector2( 1.11852, 1.06563 )
+frames = SubResource( 4 )
+animation = "timeGold"
+
+[node name="HUD" type="Control" parent="."]
+anchor_left = 0.021
+anchor_right = 0.985
+anchor_bottom = 1.001
+margin_left = 0.210999
+margin_right = 8.13495
+margin_bottom = 4.97595
+
+[node name="Tempo" type="Label" parent="HUD"]
+anchor_left = -0.012
+anchor_top = 0.083
+anchor_right = 1.012
+anchor_bottom = 0.106
+margin_left = 0.14
+margin_top = 0.509995
+margin_right = -0.140076
+margin_bottom = -86.18
+custom_fonts/font = SubResource( 2 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="score" type="Label" parent="HUD"]
+anchor_left = 0.017
+anchor_top = 0.5
+anchor_right = 0.945
+anchor_bottom = 0.518
+margin_left = -0.115
+margin_top = -4.0
+margin_right = -0.274963
+margin_bottom = 9.46002
+custom_fonts/font = SubResource( 3 )
+align = 1
+
+[node name="Reiniciar" type="TouchScreenButton" parent="HUD"]
+position = Vector2( 189, 819 )
+scale = Vector2( 0.799999, 0.799999 )
+z_index = 4
+normal = ExtResource( 8 )
+pressed = ExtResource( 9 )
+
+[node name="VoltarMenu" type="TouchScreenButton" parent="HUD"]
+position = Vector2( 188, 106 )
+z_index = 4
+normal = ExtResource( 15 )
+
+[node name="km" type="Label" parent="HUD"]
+margin_left = 6.0
+margin_top = 19.0
+margin_right = 98.0
+margin_bottom = 50.0
+text = "Salve"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Coins_tex" type="Label" parent="HUD"]
+margin_left = 490.0
+margin_top = 19.0
+margin_right = 582.0
+margin_bottom = 50.0
+text = "Salve2"
+
+[node name="_coin_" type="AnimatedSprite" parent="HUD/Coins_tex"]
+position = Vector2( -21, 6 )
+scale = Vector2( 0.5, 0.5 )
+frames = SubResource( 11 )
+frame = 2
+playing = true
+
+[node name="Meteoro" parent="." instance=ExtResource( 5 )]
+position = Vector2( -159, 194 )
+script = null
+
+[node name="Nave" parent="." instance=ExtResource( 3 )]
+position = Vector2( 43, 0 )
+z_index = 2
+
+[node name="Paredes" parent="." instance=ExtResource( 6 )]
+position = Vector2( 848, 310 )
+rotation = 1.44793
+script = null
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="primeiro" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2( -4, 0 )
+motion_mirroring = Vector2( 0, 4096 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/primeiro"]
+position = Vector2( 304, 511.823 )
+texture = ExtResource( 2 )
+
+[node name="terceiro" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 1, 0.15 )
+motion_mirroring = Vector2( 0, 2028 )
+
+[node name="segundo" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 0, 5096 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/segundo"]
+position = Vector2( 300, 0 )
+texture = ExtResource( 28 )
+
+[node name="quarto" type="ParallaxLayer" parent="ParallaxBackground"]
+modulate = Color( 1, 1, 1, 0.282353 )
+motion_mirroring = Vector2( 0, 9096 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxBackground/quarto"]
+position = Vector2( 300, 0 )
+texture = ExtResource( 7 )
+
+[node name="TimerMeteoro" type="Timer" parent="."]
+wait_time = 1.5
+
+[node name="TimerParede" type="Timer" parent="."]
+wait_time = 4.0
+
+[node name="AudioMain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+autoplay = true
+
+[connection signal="coin_anime" from="." to="." method="_on_Control_coin_anime"]
+[connection signal="gui_input" from="HUD" to="." method="_on_HUD_gui_input"]
+[connection signal="pressed" from="HUD/Reiniciar" to="." method="_on_Reiniciar_pressed"]
+[connection signal="pressed" from="HUD/VoltarMenu" to="." method="_on_VoltarMenu_pressed"]
+[connection signal="tiro" from="Nave" to="." method="_on_Nave_tiro"]
+[connection signal="timeout" from="TimerMeteoro" to="." method="_on_TimerMeteoro_timeout"]
+[connection signal="timeout" from="TimerParede" to="." method="_on_TimerParede_timeout"]
