@@ -3,6 +3,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#$BG.scale = Vector2()
 	a = 0
 	modulate = Color(0, 0, 0)
 
@@ -26,7 +27,7 @@ func _process(delta):
 		a += 0.1
 		
 	
-	for nave in $Naves.get_children():
+	for nave in $GD/Naves.get_children():
 		if( 490 < operacao(nave,"+",20,"x") and nave.scale.x >= 0.85 or nave.position.x <= 250 and nave.scale.x >= 0.85 ):
 			nave.scale -= Vector2(0.005,0.005)
 			nave.z_index = 0
@@ -48,16 +49,16 @@ func _process(delta):
 			nave.position.x = 430
 		if (nave.z_index == 0 ):
 			var zBug = 0
-			for t in $Naves.get_children():
+			for t in $GD/Naves.get_children():
 				if (t.z_index == 0):
 					zBug +=1
 			
-			if zBug == $Naves.get_children().size() and dragging == false:
-				$Naves.get_children()[zBug-1].position = Vector2(300,474)
-				$Naves.get_children()[zBug-1].scale = Vector2(1,1)
-				$Naves.get_children()[zBug-1].z_index = 1
-				$Naves.get_children()[zBug-1].modulate = Color(1, 1, 1)
-				selecionado = $Naves.get_children()[zBug-1].name
+			if zBug == $GD/Naves.get_children().size() and dragging == false:
+				$GD/Naves.get_children()[zBug-1].position = Vector2((get_viewport().size.x/2),((get_viewport().size.y/2)-($GD/Naves/Normal.texture.get_size().y/4)))
+				$GD/Naves.get_children()[zBug-1].scale = Vector2(1,1)
+				$GD/Naves.get_children()[zBug-1].z_index = 1
+				$GD/Naves.get_children()[zBug-1].modulate = Color(1, 1, 1)
+				selecionado = $GD/Naves.get_children()[zBug-1].name
 				zBug = 0
 				
 	
@@ -65,20 +66,20 @@ func _process(delta):
 func _input(event):
 	
 	if event is InputEventScreenTouch and event.is_pressed():
-		if (event.position.x > operacao($Naves/Normal,"-",20,"x") and event.position.x < operacao($Naves/Normal,"+",20,"x") and event.position.y > operacao($Naves/Normal,"-",0,"y") and event.position.y < operacao($Naves/Normal,"+",0,"y") and $Naves/Normal.z_index == 1):
-			conta = event.position.x - $Naves/Normal.position.x
+		if (event.position.x > operacao($GD/Naves/Normal,"-",20,"x") and event.position.x < operacao($GD/Naves/Normal,"+",20,"x") and event.position.y > operacao($GD/Naves/Normal,"-",0,"y") and event.position.y < operacao($GD/Naves/Normal,"+",0,"y") and $GD/Naves/Normal.z_index == 1):
+			conta = event.position.x - $GD/Naves/Normal.position.x
 			selecionado = "Normal"
 			dragging = event.is_pressed()
 			
 			
-		elif(event.position.x > operacao($Naves/Spectra,"-",20,"x") and event.position.x < operacao($Naves/Spectra,"+",20,"x") and event.position.y > operacao($Naves/Spectra,"-",0,"y") and event.position.y < operacao($Naves/Spectra,"+",0,"y") and $Naves/Spectra.z_index == 1 ):
-			conta = event.position.x - $Naves/Spectra.position.x
+		elif(event.position.x > operacao($GD/Naves/Spectra,"-",20,"x") and event.position.x < operacao($GD/Naves/Spectra,"+",20,"x") and event.position.y > operacao($GD/Naves/Spectra,"-",0,"y") and event.position.y < operacao($GD/Naves/Spectra,"+",0,"y") and $GD/Naves/Spectra.z_index == 1 ):
+			conta = event.position.x - $GD/Naves/Spectra.position.x
 			selecionado = "Spectra"
 			dragging = event.is_pressed()
 			
 			
-		elif(event.position.x > operacao($Naves/Obsidian,"-",20,"x") and event.position.x < operacao($Naves/Obsidian,"+",20,"x") and event.position.y > operacao($Naves/Obsidian,"-",0,"y") and event.position.y < operacao($Naves/Obsidian,"+",0,"y") and $Naves/Obsidian.z_index == 1 ):
-			conta = event.position.x - $Naves/Obsidian.position.x
+		elif(event.position.x > operacao($GD/Naves/Obsidian,"-",20,"x") and event.position.x < operacao($GD/Naves/Obsidian,"+",20,"x") and event.position.y > operacao($GD/Naves/Obsidian,"-",0,"y") and event.position.y < operacao($GD/Naves/Obsidian,"+",0,"y") and $GD/Naves/Obsidian.z_index == 1 ):
+			conta = event.position.x - $GD/Naves/Obsidian.position.x
 			selecionado = "placeholder"
 			dragging = event.is_pressed()
 			
@@ -88,21 +89,21 @@ func _input(event):
 
 	if event is InputEventMouseMotion and dragging:
 		# While dragging, move the sprite with the mouse.
-		if selecionado == "Spectra" and $Naves/Spectra.position.x + ($Naves/Spectra.texture.get_size().x/2) < 586:
-			$Naves/Spectra.position.x = event.position.x - conta
-			$Naves/Normal.position.x = event.position.x - conta + borda
-			$Naves/Obsidian.position.x = event.position.x - conta - borda
+		if selecionado == "Spectra" and $GD/Naves/Spectra.position.x + ($GD/Naves/Spectra.texture.get_size().x/2) < 586:
+			$GD/Naves/Spectra.position.x = event.position.x - conta
+			$GD/Naves/Normal.position.x = event.position.x - conta + borda
+			$GD/Naves/Obsidian.position.x = event.position.x - conta - borda
 			
-		elif  selecionado == "Normal" and $Naves/Normal.position.x + ($Naves/Normal.texture.get_size().x/2) < 586:
-			$Naves/Normal.position.x = event.position.x - conta
-			$Naves/Spectra.position.x = event.position.x - conta - borda
-			$Naves/Obsidian.position.x = event.position.x - conta + borda
+		elif  selecionado == "Normal" and $GD/Naves/Normal.position.x + ($GD/Naves/Normal.texture.get_size().x/2) < 586:
+			$GD/Naves/Normal.position.x = event.position.x - conta
+			$GD/Naves/Spectra.position.x = event.position.x - conta - borda
+			$GD/Naves/Obsidian.position.x = event.position.x - conta + borda
 			
 			
-		elif  selecionado == "placeholder"  and $Naves/Obsidian.position.x + ($Naves/Obsidian.texture.get_size().x/2) < 586: 
-			$Naves/Obsidian.position.x = event.position.x - conta
-			$Naves/Spectra.position.x = event.position.x - conta + borda
-			$Naves/Normal.position.x = event.position.x - conta - borda
+		elif  selecionado == "placeholder"  and $GD/Naves/Obsidian.position.x + ($GD/Naves/Obsidian.texture.get_size().x/2) < 586: 
+			$GD/Naves/Obsidian.position.x = event.position.x - conta
+			$GD/Naves/Spectra.position.x = event.position.x - conta + borda
+			$GD/Naves/Normal.position.x = event.position.x - conta - borda
 			
 		
 

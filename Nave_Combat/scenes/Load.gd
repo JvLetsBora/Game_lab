@@ -8,8 +8,7 @@ var continua = true
 func _ready():
 	y = 0
 	x = 0
-
-
+	print(get_viewport().size)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if (x < 0.24) and continua == true:

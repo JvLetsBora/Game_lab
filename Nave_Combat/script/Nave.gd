@@ -23,10 +23,11 @@ var TEXTURAS = {
 var vel_limite = 1.2
 export var velocidade = 600
 export var esquiva = 1
-export var coeficiente = 0
+export var coeficiente = 1
 export var frame = 0
-onready var limites_d =  - 76
-onready var limites_e = get_viewport().size.x + 76
+onready var limites_d = get_viewport().size[0]/15
+onready var limites_e = get_viewport().size[0] - (get_viewport().size[0]/15)
+onready var limite_baixo =  (get_viewport().size[1]/100)*70
 var direcao = 0
 export var direcaoD = 0
 export var direcaoE = 0
@@ -34,7 +35,7 @@ signal tiro
 export var tempo = 0
 
 func _ready():
-	
+#	print(limite_baixo)
 	if Global.Nav_select == "Obsidian" :
 		$AnimatedSprite.frames.clear("parada")
 		$AnimatedSprite.frames.clear("andandoD")
@@ -77,10 +78,10 @@ func _ready():
 	$AnimatedSprite.animation = "parada"
 
 func _process(delta):
-	#(get_viewport().size.x/2)/360
 	frame = $AnimatedSprite.frame
 
 	if(Global.Jogo_on == true):
+		
 		direcao = direcaoE+direcaoD
 		if(direcao > 0 and position.x < limites_e):
 			if(coeficiente > 0.5):
@@ -90,7 +91,7 @@ func _process(delta):
 			position.x += (velocidade*delta*esquiva)*direcao
 
 			rotation_degrees += tempo*delta
-			if(position.y < 720):position.y += esquiva
+			if(position.y < limite_baixo):position.y += esquiva
 		
 		if(direcao < 0 and  position.x > limites_d):
 			if(coeficiente > 0.5):
@@ -99,17 +100,29 @@ func _process(delta):
 			$AnimatedSprite.animation = "andandoE"
 			position.x += (velocidade*delta*esquiva)*direcao
 			rotation_degrees -= tempo*delta
-			if(position.y < 720):position.y += esquiva
+			if(position.y < limite_baixo):position.y += esquiva
 		
 		if(direcao == 0 or position.x <= limites_d or position.x >= limites_e):
+			rotation_degrees = 0
 			if coeficiente < vel_limite or coeficiente < vel_limite*1.3 and position.y <= 330:
 				coeficiente += (delta/2)
+				
 			direcaoE = 0
 			direcaoD = 0
+			$AnimatedSprite.animation = "parada"
 			if(position.y > 320):
 				position.y -= 1+coeficiente
+		else:
+			rotation_degrees = getDegress(position.x)
 			
 	else:
 		$AnimatedSprite.animation = "morta"
 	
-	
+
+func getDegress(p):
+	var a = 6*(((p-get_viewport().size.x)*(p-(get_viewport().size.x/2)))/((0-get_viewport().size.x)*(0-(get_viewport().size.x/2))))+1*(((p+0)*(p-get_viewport().size.x))/((get_viewport().size.x/2)*((get_viewport().size.x/2)-get_viewport().size.x)))-6*((p*(p-(get_viewport().size.x/2)))/(get_viewport().size.x*(get_viewport().size.x-(get_viewport().size.x/2))))
+	return a
+
+func getVel(p):
+	var vel =p
+	return vel

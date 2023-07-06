@@ -58,7 +58,6 @@ script = ExtResource( 6 )
 
 [node name="C_nave" type="CollisionShape2D" parent="Nave"]
 shape = SubResource( 2 )
-disabled = true
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.8, 0.8 )

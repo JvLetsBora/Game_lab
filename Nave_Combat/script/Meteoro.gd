@@ -46,7 +46,7 @@ func _ready():
 		vida = meteoroVida
 
 func _process(delta):
-	if(position.y > 1080 or position.x > 680 or position.x < -80):
+	if(position.y > get_viewport().size.y + 220 or position.x > get_viewport().size.x + 220 or position.x < -220):
 		queue_free()
 	elif(meteoroVida <= 0): #scale.x < 0.4
 		var explode = load("res://prefebs/explode.tscn")
@@ -91,11 +91,7 @@ func _on_Area2D_area_entered(area):
 		meteoroVida -=1
 	elif(area.is_in_group("Meteoro")):
 		impacto = true
-		if filho == false and area.name != "Colide_D" and area.name != "Colide_E":
-			meteoroVida -= area.meteoroVida
-			
-		else:
-			return
+		meteoroVida -= 2
 	elif(area.is_in_group("coletavel")):
 		area.position += Vector2(1,1)
 		

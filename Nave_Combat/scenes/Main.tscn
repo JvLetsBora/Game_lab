@@ -1,11 +1,9 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://script/main.gd" type="Script" id=1]
 [ext_resource path="res://grafica/skay.jpg" type="Texture" id=2]
 [ext_resource path="res://prefebs/Nave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://grafica/coin.png" type="Texture" id=4]
-[ext_resource path="res://prefebs/Meteoro.tscn" type="PackedScene" id=5]
-[ext_resource path="res://prefebs/Paredes.tscn" type="PackedScene" id=6]
 [ext_resource path="res://grafica/skay2.png" type="Texture" id=7]
 [ext_resource path="res://grafica/up.png" type="Texture" id=8]
 [ext_resource path="res://grafica/Down.png" type="Texture" id=9]
@@ -84,12 +82,16 @@ animations = [ {
 } ]
 
 [node name="Control" type="Control"]
+anchor_left = 0.005
+anchor_top = 0.00878906
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -7.0
-margin_right = 2.0
+margin_left = -3.0
+margin_top = -9.0
+rect_pivot_offset = Vector2( 300, 0 )
 script = ExtResource( 1 )
 __meta__ = {
+"_edit_horizontal_guides_": [ 108.0 ],
 "_edit_use_anchors_": true,
 "_edit_vertical_guides_": [ 195.0, 39.0, 568.0 ]
 }
@@ -103,12 +105,14 @@ frames = SubResource( 4 )
 animation = "timeGold"
 
 [node name="HUD" type="Control" parent="."]
-anchor_left = 0.021
+anchor_left = -0.001
+anchor_top = -0.002
 anchor_right = 0.985
 anchor_bottom = 1.001
-margin_left = 0.210999
-margin_right = 8.13495
-margin_bottom = 4.97595
+margin_left = 0.719401
+margin_top = 0.5555
+margin_right = 8.39099
+margin_bottom = 4.97217
 
 [node name="Tempo" type="Label" parent="HUD"]
 anchor_left = -0.012
@@ -121,49 +125,52 @@ margin_right = -0.140076
 margin_bottom = -86.18
 custom_fonts/font = SubResource( 2 )
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="score" type="Label" parent="HUD"]
 anchor_left = 0.017
 anchor_top = 0.5
 anchor_right = 0.945
 anchor_bottom = 0.518
-margin_left = -0.115
-margin_top = -4.0
-margin_right = -0.274963
-margin_bottom = 9.46002
+margin_left = 17.811
+margin_top = 1.75
+margin_right = 17.6511
+margin_bottom = 15.21
 custom_fonts/font = SubResource( 3 )
 align = 1
 
 [node name="Reiniciar" type="TouchScreenButton" parent="HUD"]
-position = Vector2( 189, 819 )
+position = Vector2( 256.4, 903.75 )
 scale = Vector2( 0.799999, 0.799999 )
 z_index = 4
 normal = ExtResource( 8 )
 pressed = ExtResource( 9 )
 
 [node name="VoltarMenu" type="TouchScreenButton" parent="HUD"]
-position = Vector2( 188, 106 )
+position = Vector2( 256.4, 268.75 )
 z_index = 4
 normal = ExtResource( 15 )
 
 [node name="km" type="Label" parent="HUD"]
-margin_left = 6.0
-margin_top = 19.0
-margin_right = 98.0
-margin_bottom = 50.0
+anchor_left = 0.053
+anchor_top = 0.015
+anchor_right = 0.181
+anchor_bottom = 0.039
+margin_left = 33.999
+margin_top = 90.46
+margin_right = 34.223
+margin_bottom = 90.596
 text = "Salve"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+autowrap = true
 
 [node name="Coins_tex" type="Label" parent="HUD"]
-margin_left = 490.0
-margin_top = 19.0
-margin_right = 582.0
-margin_bottom = 50.0
+anchor_left = 0.846
+anchor_top = 0.011
+anchor_right = 0.974
+anchor_bottom = 0.036
+margin_left = 41.418
+margin_top = 95.604
+margin_right = 42.642
+margin_bottom = 97.454
 text = "Salve2"
 
 [node name="_coin_" type="AnimatedSprite" parent="HUD/Coins_tex"]
@@ -173,28 +180,19 @@ frames = SubResource( 11 )
 frame = 3
 playing = true
 
-[node name="Meteoro" parent="." instance=ExtResource( 5 )]
-position = Vector2( -159, 194 )
-script = null
-
 [node name="Nave" parent="." instance=ExtResource( 3 )]
 position = Vector2( 43, 0 )
 z_index = 2
 
-[node name="Paredes" parent="." instance=ExtResource( 6 )]
-position = Vector2( 848, 310 )
-rotation = 1.44793
-script = null
-
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="primeiro" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2( -4, 0 )
 motion_mirroring = Vector2( 0, 4096 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/primeiro"]
-position = Vector2( 304, 511.823 )
+scale = Vector2( 1.2, 1 )
 texture = ExtResource( 2 )
+offset = Vector2( 300, 2048 )
 
 [node name="terceiro" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 1, 0.15 )
@@ -204,16 +202,18 @@ motion_mirroring = Vector2( 0, 2028 )
 motion_mirroring = Vector2( 0, 5096 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/segundo"]
-position = Vector2( 300, 0 )
+scale = Vector2( 1.2, 1 )
 texture = ExtResource( 28 )
+offset = Vector2( 300, 2048 )
 
 [node name="quarto" type="ParallaxLayer" parent="ParallaxBackground"]
-modulate = Color( 1, 1, 1, 0.282353 )
-motion_mirroring = Vector2( 0, 9096 )
+motion_mirroring = Vector2( 0, 9000 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/quarto"]
-position = Vector2( 300, 0 )
+modulate = Color( 1, 1, 1, 0.278431 )
+scale = Vector2( 1.2, 1 )
 texture = ExtResource( 7 )
+offset = Vector2( 300.494, 2048.11 )
 
 [node name="TimerMeteoro" type="Timer" parent="."]
 wait_time = 1.5

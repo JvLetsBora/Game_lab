@@ -6,10 +6,19 @@ var devagar = 0.1
 var normal = 0.25
 
 
+func _ready():
+	rect_size.x = get_viewport().size.x
+	rect_size.y = get_viewport().size.y
+	$Piso.position = Vector2((get_viewport().size.x/2),(get_viewport().size.y/2))
+	$Pilares.position = Vector2((get_viewport().size.x/2),(get_viewport().size.y/2))
+	$SkayBg.position = Vector2((get_viewport().size.x/2),(get_viewport().size.y/2))
+
+
 func _on_Button_pressed():
 	anima = "start"
 
 func _process(delta):
+
 	if anima == "start":
 		if($Pilares.scale < Vector2(1.5,1.5)):
 			$Pilares.scale += Vector2(delta*rapido,delta*rapido)

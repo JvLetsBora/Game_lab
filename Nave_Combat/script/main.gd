@@ -1,5 +1,8 @@
 extends Control
 
+
+
+
 var eventLife = 20
 var timer = 0
 var timerEvent = 0
@@ -24,7 +27,6 @@ var btn = false
 signal coin_anime
 var _coinx = 0
 
-
 var bg_eventos = [
 	preload("res://prefebs/objetos_bg/satelite_obitando.tscn")
 ]
@@ -42,14 +44,18 @@ var gerarFormacao = {
 	3: "cobraY"
 	}
 var coin_controlador = 7
-var coinQuantia = 0.009
+var coinQuantia = 0
 var coinX = 130
 var coinY = 0
-
+var ajusteBtn = 360
 
 func _ready():
 	$AudioMain.volume_db = -60
 	Global.Jogo_on = true
+	$HUD/VoltarMenu.position.x = (get_viewport().size.x/2) - ($HUD/VoltarMenu.normal.get_width()/2)
+	$HUD/Reiniciar.position.x = (get_viewport().size.x/2) - ($HUD/VoltarMenu.normal.get_width()/2)
+	$HUD/VoltarMenu.position.y = (get_viewport().size.y/100)*20
+	$HUD/Reiniciar.position.y = (get_viewport().size.y/100)*80
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	coinFormacao = gerarFormacao[rng.randi_range(1, gerarFormacao.size()-1)]
@@ -59,14 +65,14 @@ func _ready():
 	$HUD/VoltarMenu.visible = false
 	$TimerParede.start()
 	$TimerMeteoro.start()
-	$Nave.position = Vector2(300,800)
+	$Nave.position = Vector2((get_viewport().size.x)/2,(get_viewport().size.x/100)*120)
 
 
 
 func _process(delta):
 	#print($Nave.direcao)
+	
 	if(Global.Jogo_on == true):
-		#print(timer)
 		if atirando == true and tiro_t > 0.1:
 			$Nave.emit_signal("tiro")
 			tiro_t = 0
@@ -88,7 +94,7 @@ func _process(delta):
 		$ParallaxBackground/primeiro.motion_offset.y += (($Nave.coeficiente+1)*(150*delta))*0.1
 		$ParallaxBackground/quarto.motion_offset.y += (($Nave.coeficiente+1)*(150*delta))*0.4
 		$ParallaxBackground/segundo.motion_offset.y += (($Nave.coeficiente+1)*(150*delta))*2
-
+		coinQuantia = delta
 		if(timerEvent2 >= 6.8 and timerEvent2 <= coin_controlador):
 				if(coinFormacao == "linha"):
 					coinX = 400
@@ -98,17 +104,19 @@ func _process(delta):
 					coinX -= 27
 					gera_Coin([coinX+360,coinY])
 				elif(coinFormacao == "cobraX"):
-					coinX += 27
-					coinY -= ((coinX^2)-coinX)*7
+					coinX -= 2
+					coinY += ((coinY^2)-coinY)*21
 					gera_Coin([coinX,coinY])
 				elif(coinFormacao == "cobraY"):
 					coinY -= 27
 					coinX += ((coinY^2)-coinY)*21
 					gera_Coin([coinX,coinY])
-				coin_controlador -= 0.001 
+				coin_controlador -= delta/100
 				
 		if (coin_controlador <= (7 - coinQuantia)):
 				timerEvent2 = 0
+				coinY = 0
+				coinX = 0
 				coin_controlador = 7
 		
 		if(timerEvent > eventLife):
@@ -140,7 +148,7 @@ func _process(delta):
 		if $AudioMain.volume_db != -80:
 			$AudioMain.volume_db -= 2
 		
-		if $HUD/Tempo.rect_position.y < 400:
+		if $HUD/Tempo.rect_position.y < (get_viewport().size.y/2)-60:
 			$HUD/Tempo.rect_position.y += 5*(1+delta)
 		if $Nave.frame >= 8:
 			$Nave.visible = false
@@ -169,9 +177,13 @@ func game_events():
 func _on_TimerMeteoro_timeout():
 
 	if(chuvaMeteoro_on == true and Global.Jogo_on == true):
-		var meteoros = Meteoro.instance()
+		var meteoros1 = Meteoro.instance()
+		var meteoros2 = Meteoro.instance()
 		#meteoros.velocidade += ($Nave.coeficiente*Global.vel)
-		add_child(meteoros)
+		meteoros2.position.x = meteoros2.position.x - meteoros1.position.x
+		meteoros2.tamanho = 0.5
+		add_child(meteoros1)
+		add_child(meteoros2)
 
 
 func _on_TimerParede_timeout():
@@ -236,7 +248,7 @@ func _on_HUD_gui_input(event):
 				_d = true
 				btn = false
 
-
 func _on_Control_coin_anime():
 	_coinx += 1
 	$HUD/Coins_tex.text = str(_coinx)
+
