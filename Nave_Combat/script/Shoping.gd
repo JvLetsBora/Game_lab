@@ -1,9 +1,9 @@
 extends Control
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#$BG.scale = Vector2()
 	a = 0
 	modulate = Color(0, 0, 0)
 
@@ -26,8 +26,8 @@ func _process(delta):
 		modulate += Color(0.1, 0.1, 0.1,0.01)
 		a += 0.1
 		
-	
-	for nave in $GD/Naves.get_children():
+
+	for nave in $GDNaves.get_children():
 		if( 490 < operacao(nave,"+",20,"x") and nave.scale.x >= 0.85 or nave.position.x <= 250 and nave.scale.x >= 0.85 ):
 			nave.scale -= Vector2(0.005,0.005)
 			nave.z_index = 0
@@ -86,7 +86,6 @@ func _input(event):
 			
 		
 	elif event is InputEventScreenTouch and not event.is_pressed(): dragging = event.is_pressed()
-
 	if event is InputEventMouseMotion and dragging:
 		# While dragging, move the sprite with the mouse.
 		if selecionado == "Spectra" and $GD/Naves/Spectra.position.x + ($GD/Naves/Spectra.texture.get_size().x/2) < 586:
@@ -125,9 +124,6 @@ func operacao(obj, opera, k, eixo):
 	
 	return Difereca_PS
 
-func _on_Voltar_released():
-	get_tree().change_scene("res://scenes/Inicio.tscn")
-
 
 func _on_Buy_pressed():
 	if Emfoco == "Normal":
@@ -147,3 +143,7 @@ func _on_Buy_pressed():
 		
 
 	
+
+
+func _on_Voltar_pressed():
+	get_tree().change_scene("res://scenes/Inicio.tscn")

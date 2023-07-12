@@ -1,18 +1,13 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://grafica/Shopping/Shoping_BG.jpg" type="Texture" id=1]
 [ext_resource path="res://grafica/Shopping/placeLaigth.png" type="Texture" id=2]
 [ext_resource path="res://grafica/Shopping/BTN_buy_UP.png" type="Texture" id=3]
 [ext_resource path="res://grafica/Shopping/BTN_buy_DOWN.png" type="Texture" id=4]
 [ext_resource path="res://grafica/Shopping/BTN_voltar.png" type="Texture" id=5]
-[ext_resource path="res://script/Shoping.gd" type="Script" id=6]
-
-[sub_resource type="DynamicFontData" id=3]
-font_path = "res://font/Corbel Bold.ttf"
-
-[sub_resource type="DynamicFont" id=4]
-size = 24
-font_data = SubResource( 3 )
+[ext_resource path="res://script/___Teste_Shopping.gd" type="Script" id=6]
+[ext_resource path="res://grafica/Shopping/navs/NaveNormal.png" type="Texture" id=7]
+[ext_resource path="res://grafica/Shopping/BTN_voltar_Houver.png" type="Texture" id=11]
 
 [sub_resource type="DynamicFontData" id=2]
 font_path = "res://font/Corbel Bold.ttf"
@@ -21,6 +16,13 @@ font_path = "res://font/Corbel Bold.ttf"
 size = 40
 outline_size = 1
 font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://font/Corbel Bold.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = SubResource( 3 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -48,37 +50,43 @@ margin_bottom = 0.119995
 texture = ExtResource( 2 )
 expand = true
 
-[node name="BtnVoltar" type="Control" parent="."]
-anchor_top = 0.02
-anchor_right = 0.182
-anchor_bottom = 0.074
-margin_top = 0.519999
-margin_right = -0.200005
-margin_bottom = 0.223999
+[node name="Custo" type="Label" parent="TextureRect2"]
+anchor_left = 0.383
+anchor_top = 0.115
+anchor_right = 0.598
+anchor_bottom = 0.641
+margin_left = 0.125015
+margin_top = -0.0450258
+margin_right = 0.124908
+margin_bottom = -0.0150299
+custom_fonts/font = SubResource( 1 )
+text = "99999"
+align = 1
+valign = 1
+clip_text = true
 
-[node name="Voltar" type="TouchScreenButton" parent="BtnVoltar"]
-position = Vector2( -1, -1 )
-normal = ExtResource( 5 )
+[node name="Voltar" type="TextureButton" parent="."]
+anchor_top = 0.015
+anchor_right = 0.156
+anchor_bottom = 0.059
+margin_top = -0.200001
+margin_right = -0.32
+margin_bottom = -0.520004
+texture_normal = ExtResource( 11 )
+texture_pressed = ExtResource( 5 )
+stretch_mode = 2
 
-[node name="BtnBuy" type="Control" parent="."]
-anchor_left = 0.4
-anchor_top = 0.908
-anchor_right = 0.602
-anchor_bottom = 0.967
-margin_top = 0.207947
-margin_right = -0.200043
-margin_bottom = -0.208069
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Buy" type="TouchScreenButton" parent="BtnBuy"]
-position = Vector2( 0, 1 )
-normal = ExtResource( 3 )
-pressed = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Buy" type="TextureButton" parent="."]
+anchor_left = 0.418
+anchor_top = 0.915
+anchor_right = 0.585
+anchor_bottom = 0.961
+margin_left = 0.039978
+margin_top = -0.200073
+margin_right = -0.200012
+margin_bottom = -0.0800781
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
 
 [node name="SeuGanho" type="Label" parent="."]
 anchor_left = 0.785
@@ -108,9 +116,6 @@ margin_bottom = -0.616028
 custom_fonts/font = SubResource( 4 )
 text = "99999"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LiveMax" type="Label" parent="."]
 anchor_left = 0.453
@@ -124,9 +129,6 @@ margin_bottom = -0.616028
 custom_fonts/font = SubResource( 4 )
 text = "99999"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NavSkipp" type="Label" parent="."]
 anchor_left = 0.693
@@ -140,22 +142,47 @@ margin_bottom = -0.616028
 custom_fonts/font = SubResource( 4 )
 text = "99999"
 align = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Custo" type="Label" parent="."]
-anchor_left = 0.393
-anchor_top = 0.105
-anchor_right = 0.608
-anchor_bottom = 0.162
-margin_left = 0.199997
-margin_top = 0.479988
-margin_right = 0.199951
-margin_bottom = 0.112
-custom_fonts/font = SubResource( 1 )
-text = "99999"
-align = 1
+[node name="GDNaves" type="Control" parent="."]
+anchor_top = 0.22
+anchor_right = 1.004
+anchor_bottom = 0.699
+margin_top = 0.399994
+margin_right = 0.119934
+margin_bottom = 0.279907
 
-[connection signal="released" from="BtnVoltar/Voltar" to="." method="_on_Voltar_released"]
-[connection signal="pressed" from="BtnBuy/Buy" to="." method="_on_Buy_pressed"]
+[node name="nav" type="TextureRect" parent="GDNaves"]
+anchor_left = 0.272
+anchor_top = 0.175
+anchor_right = 0.705
+anchor_bottom = 0.799
+margin_left = 0.344025
+margin_top = -0.274986
+margin_right = 0.285065
+margin_bottom = 0.213074
+texture = ExtResource( 7 )
+
+[node name="nav2" type="TextureRect" parent="GDNaves"]
+anchor_left = 0.272
+anchor_top = 0.175
+anchor_right = 0.705
+anchor_bottom = 0.799
+margin_left = 0.344025
+margin_top = -0.274986
+margin_right = 0.285065
+margin_bottom = 0.213074
+texture = ExtResource( 7 )
+
+[node name="nav3" type="TextureRect" parent="GDNaves"]
+anchor_left = 0.272
+anchor_top = 0.175
+anchor_right = 0.705
+anchor_bottom = 0.799
+margin_left = 0.344025
+margin_top = -0.274986
+margin_right = 0.285065
+margin_bottom = 0.213074
+texture = ExtResource( 7 )
+
+[connection signal="pressed" from="Voltar" to="." method="_on_Voltar_pressed"]
+[connection signal="pressed" from="Buy" to="." method="_on_Buy_pressed"]

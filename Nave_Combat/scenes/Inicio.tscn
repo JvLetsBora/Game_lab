@@ -23,6 +23,27 @@ __meta__ = {
 "_edit_vertical_guides_": [ 304.0, 516.0 ]
 }
 
+[node name="back_1" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+
+[node name="back_2" type="TextureRect" parent="."]
+anchor_right = 1.001
+anchor_bottom = 1.0
+margin_right = 0.279968
+texture = ExtResource( 1 )
+expand = true
+
+[node name="back_3" type="TextureRect" parent="."]
+anchor_right = 0.999
+anchor_bottom = 1.0
+margin_right = -0.280029
+margin_bottom = -1.0
+texture = ExtResource( 2 )
+expand = true
+
 [node name="Settigns" parent="." instance=ExtResource( 6 )]
 
 [node name="Button" type="Button" parent="."]
@@ -48,9 +69,6 @@ margin_right = 0.199951
 margin_bottom = -0.296021
 custom_fonts/font = SubResource( 2 )
 text = "SHOP"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Fases" type="Button" parent="."]
 anchor_left = 0.287
@@ -63,23 +81,6 @@ margin_right = 0.199951
 margin_bottom = 0.399994
 custom_fonts/font = SubResource( 2 )
 text = "MAP"
-
-[node name="Piso" type="Sprite" parent="."]
-position = Vector2( 360, 640 )
-scale = Vector2( 1.2, 1.25 )
-z_index = -1
-texture = ExtResource( 1 )
-
-[node name="Pilares" type="Sprite" parent="."]
-position = Vector2( 360, 640 )
-scale = Vector2( 1.2, 1.25 )
-texture = ExtResource( 2 )
-
-[node name="SkayBg" type="Sprite" parent="."]
-position = Vector2( 360, 640 )
-scale = Vector2( 1.2, 1.25 )
-z_index = -2
-texture = ExtResource( 4 )
 
 [node name="audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
