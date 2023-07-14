@@ -1,6 +1,4 @@
 extends Area2D
-class tiro:
-	pass
 
 export var balaVel = 1000
 var bateu = false
