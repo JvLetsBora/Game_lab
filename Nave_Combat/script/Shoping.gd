@@ -43,7 +43,7 @@ func _process(delta):
 			nave.modulate = Color(0.588235, 0.588235, 0.588235)
 			if (nave.rect_scale.x >= 1):nave.rect_scale -= Vector2(0.05,0.05)
 	if (new_view == false):
-		if(("nav_"+Global.Nav_select) != Emfoco):
+		if(("nav_"+Global.Nav_select[Global.id]) != Emfoco):
 			for nave in $GDNaves.get_children():
 				nave.rect_position.x -= 45
 		else:
