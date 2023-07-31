@@ -1,6 +1,9 @@
 extends Node2D
 
 #res://grafica/NavsTexture/
+
+
+var TEXTURAS = null
 var vel_limite = 1.2
 export var velocidade = 600
 export var esquiva = 1
@@ -16,6 +19,7 @@ signal tiro
 export var tempo = 0
 
 func _ready():
+
 	$AnimatedSprite.animation = "parada"
 
 func _process(delta):
