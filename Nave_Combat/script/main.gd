@@ -1,7 +1,7 @@
 extends Control
 
 
-
+var nav_posicoes = []
 
 var eventLife = 20
 var timer = 0
@@ -238,6 +238,8 @@ func _on_HUD_gui_input(event):
 #			_e = true
 	if (event is InputEventScreenTouch):
 		if (event.pressed == true):
+			nav_posicoes.append(Global.nave["Pos"])
+			update()
 			$Nave.tempo = 0
 			if (btn == false):
 				_e = true
@@ -251,4 +253,14 @@ func _on_HUD_gui_input(event):
 func _on_Control_coin_anime():
 	_coinx += 1
 	$HUD/Coins_tex.text = str(_coinx)
+
+#func draw_circle_arc(pos):
+#	var color = Color(1.0, 0.0, 0.0)
+#	draw_circle(pos,4,color)
+
+#func _draw():
+#	for pos in nav_posicoes:
+#		draw_circle_arc(pos)
+#	pass
+	
 

@@ -3,7 +3,12 @@ extends Node2D
 #res://grafica/NavsTexture/
 
 
-var TEXTURAS = null
+var TEXTURAS = [
+	"res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/D",
+	"res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/E",
+	"res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/morte",
+	"res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/IDLE"
+	]
 var vel_limite = 1.2
 export var velocidade = 600
 export var esquiva = 1
@@ -19,10 +24,12 @@ signal tiro
 export var tempo = 0
 
 func _ready():
-
+	for path in TEXTURAS:
+		dir_contents(path)
 	$AnimatedSprite.animation = "parada"
 
 func _process(delta):
+	
 	frame = $AnimatedSprite.frame
 
 	if(Global.Jogo_on == true):
@@ -76,7 +83,7 @@ func dir_contents(path):
 			if !dir.current_is_dir():
 				var _name = String(file_name)
 				if _name.find("import") == -1 and _name != ".DS_Store":
-					Global.naves_.append(_name)
+					print(_name)
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
