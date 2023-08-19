@@ -96,7 +96,8 @@ func _on_Area2D_area_entered(area):
 		area.position += Vector2(1,1)
 		
 	else:
-		meteoroVida -= meteoroVida
+		impacto = true
+		meteoroVida = 0
 
 
 	

@@ -150,7 +150,7 @@ func _process(delta):
 		
 		if $HUD/Tempo.rect_position.y < (get_viewport().size.y/2)-60:
 			$HUD/Tempo.rect_position.y += 5*(1+delta)
-		if $Nave.frame >= 8:
+		if $Nave.frame >= $Nave.anima_fim:
 			$Nave.visible = false
 			$HUD/Reiniciar.visible = true
 			$HUD/VoltarMenu.visible = true

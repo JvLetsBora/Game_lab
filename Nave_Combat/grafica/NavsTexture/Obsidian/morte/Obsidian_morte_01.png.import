@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Obsidian_morte_08.png-0a514e3702d69c792467e8fb7d347dc2.stex"
+path="res://.import/Obsidian_morte_01.png-674c6faf509f07a8884a141c83e4910a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grafica/NavsTexture/Obsidian/morte/images/Obsidian_morte_08.png"
-dest_files=[ "res://.import/Obsidian_morte_08.png-0a514e3702d69c792467e8fb7d347dc2.stex" ]
+source_file="res://grafica/NavsTexture/Obsidian/morte/Obsidian_morte_01.png"
+dest_files=[ "res://.import/Obsidian_morte_01.png-674c6faf509f07a8884a141c83e4910a.stex" ]
 
 [params]
 

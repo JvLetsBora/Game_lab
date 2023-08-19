@@ -4,7 +4,7 @@ const SAVE_GAME_PATH := "res://save.json"
 
 var _file := File.new()
 
-var dinheiro = 0
+var dinheiro = 880
 var pontos = 0
 var Jogo_on = true
 var nave = {
@@ -12,10 +12,10 @@ var nave = {
 	"Coeficiente": 1.20
 		}
 
-var Nav_select = ["Normal"]
+var Nav_select = ["Spectra"]
 var scaleMeteoro
 var velMeteoro
-var vel = 1.1
+var vel = 2.1
 var go = false
 var id = 0
 
@@ -29,7 +29,7 @@ var allNavs = {
 	},
 	"Obsidian":{
 		"custo":140,
-		"Coeficiente": 1.20,
+		"Coeficiente": 1.80,
 		"poder":9,
 		"vida":1
 	},
@@ -41,7 +41,7 @@ var allNavs = {
 	},
 	"Spectra":{
 		"custo":85,
-		"Coeficiente": 1.20,
+		"Coeficiente": 3.20,
 		"poder":9,
 		"vida":1
 	},

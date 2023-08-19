@@ -2,12 +2,12 @@ extends Node2D
 
 #res://grafica/NavsTexture/
 
-
+var anima_fim = 0
 var TEXTURAS = [
-	"res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/D",
-	"res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/E",
-	"res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/morte",
-	"res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/IDLE"
+	["res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/D/","andandoD"],
+	["res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/E/","andandoE"],
+	["res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/morte/","morta"],
+	["res://grafica/NavsTexture/"+Global.Nav_select[Global.id]+"/IDLE/","parada"]
 	]
 var vel_limite = 1.2
 export var velocidade = 600
@@ -24,9 +24,17 @@ signal tiro
 export var tempo = 0
 
 func _ready():
+	coeficiente = Global.allNavs[Global.Nav_select[Global.id]]["Coeficiente"]
+	vel_limite = coeficiente+1.2
+	$AnimatedSprite.frames.clear("parada")
+	$AnimatedSprite.frames.clear("andandoD")
+	$AnimatedSprite.frames.clear("andandoE")
+	$AnimatedSprite.frames.clear("morta")
 	for path in TEXTURAS:
-		dir_contents(path)
+		dir_contents(path[0],path[1])
 	$AnimatedSprite.animation = "parada"
+	anima_fim = int($AnimatedSprite.frames.get_frame_count("morta"))-1
+	
 
 func _process(delta):
 	
@@ -36,7 +44,7 @@ func _process(delta):
 		
 		direcao = direcaoE+direcaoD
 		if(direcao > 0 and position.x < limites_e):
-			if(coeficiente > 0.5):
+			if(coeficiente > 0.9):
 				coeficiente -= (coeficiente)*delta
 				
 			$AnimatedSprite.animation = "andandoD"
@@ -57,7 +65,7 @@ func _process(delta):
 		if(direcao == 0 or position.x <= limites_d or position.x >= limites_e):
 			rotation_degrees = 0
 			if coeficiente < vel_limite or coeficiente < vel_limite*1.3 and position.y <= 330:
-				coeficiente += (delta/2)
+				coeficiente += delta
 				
 			direcaoE = 0
 			direcaoD = 0
@@ -74,16 +82,20 @@ func getDegress(p):
 	var a = 6-((4*p*(2*get_viewport().size.x+p))/(get_viewport().size.x*get_viewport().size.x))
 	return a
 
-func dir_contents(path):
+func dir_contents(path,anima):
 	var dir = Directory.new()
 	if dir.open(path) == OK:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
+		var i = 0
 		while file_name != "":
 			if !dir.current_is_dir():
 				var _name = String(file_name)
 				if _name.find("import") == -1 and _name != ".DS_Store":
-					print(_name)
+					#print(path+_name," -> ",i)
+					var _path:Texture = load(path+_name)
+					$AnimatedSprite.frames.add_frame(anima,_path,i)
+					i += 1
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
