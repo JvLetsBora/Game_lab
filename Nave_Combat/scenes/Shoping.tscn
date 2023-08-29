@@ -28,7 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 21.0, 76.0, 291.0, 474.0 ],
+"_edit_horizontal_guides_": [ 21.0, 76.0, 291.0, 474.0, 1093.0 ],
 "_edit_vertical_guides_": [ 300.0, 166.0, -257.0 ]
 }
 
@@ -50,16 +50,16 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="Custo" type="Label" parent="TextureRect2"]
-anchor_left = 0.383
-anchor_top = 0.115
-anchor_right = 0.598
-anchor_bottom = 0.641
-margin_left = 0.125015
-margin_top = -0.0450258
-margin_right = 0.124908
-margin_bottom = -0.0150299
+anchor_left = 0.293
+anchor_top = 0.211
+anchor_right = 0.688
+anchor_bottom = 0.737
+margin_left = 0.0150146
+margin_top = -0.0450001
+margin_right = 0.240021
+margin_bottom = -0.015007
 custom_fonts/font = SubResource( 1 )
-text = "99999"
+text = "Selecionar"
 align = 1
 valign = 1
 clip_text = true
@@ -104,43 +104,40 @@ __meta__ = {
 }
 
 [node name="PowerGun" type="Label" parent="."]
-anchor_left = 0.213
-anchor_top = 0.818
-anchor_right = 0.382
-anchor_bottom = 0.859
-margin_left = 0.199989
-margin_top = -0.632019
-margin_right = -6.20001
-margin_bottom = -0.616028
+anchor_left = 0.214
+anchor_top = 0.823
+anchor_right = 0.374
+anchor_bottom = 0.854
+margin_left = 11.92
+margin_top = -1.44006
+margin_right = 11.72
+margin_bottom = -1.12
 custom_fonts/font = SubResource( 4 )
 text = "99999"
-align = 1
 
 [node name="LiveMax" type="Label" parent="."]
 anchor_left = 0.453
 anchor_top = 0.817
 anchor_right = 0.613
 anchor_bottom = 0.859
-margin_left = 0.199982
-margin_top = 0.391968
-margin_right = 0.199982
-margin_bottom = -0.616028
+margin_left = 11.84
+margin_top = 6.23999
+margin_right = 11.64
+margin_bottom = -7.52002
 custom_fonts/font = SubResource( 4 )
 text = "99999"
-align = 1
 
 [node name="NavSkipp" type="Label" parent="."]
 anchor_left = 0.693
 anchor_top = 0.817
 anchor_right = 0.852
 anchor_bottom = 0.859
-margin_left = 0.199982
-margin_top = 0.391968
-margin_right = -0.200043
-margin_bottom = -0.616028
+margin_left = 12.2
+margin_top = 6.23999
+margin_right = 11.8
+margin_bottom = -7.52002
 custom_fonts/font = SubResource( 4 )
 text = "99999"
-align = 1
 
 [node name="GDNaves" type="Control" parent="."]
 anchor_top = 0.22

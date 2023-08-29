@@ -22,7 +22,7 @@ func _on_Tiro_c_bateu():
 	bateu = true
 	$TiroArea.set_deferred("disabled", true)
 	$AnimaTiro.animation = "explodi"
-	yield(get_tree().create_timer(0.2),"timeout")
+	yield(get_tree().create_timer(0.1),"timeout")
 	queue_free()
 
 

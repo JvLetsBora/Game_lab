@@ -12,7 +12,7 @@ var nave = {
 	"Coeficiente": 1.20
 		}
 
-var Nav_select = ["Spectra"]
+var Nav_select = ["Normal"]
 var scaleMeteoro
 var velMeteoro
 var vel = 2.1
@@ -23,30 +23,30 @@ var id = 0
 var allNavs = {
 	"Normal":{
 		"custo":0,
-		"Coeficiente": 1.20,
+		"Coeficiente": 2.20,
 		"poder":9,
 		"vida":1
 	},
 	"Obsidian":{
 		"custo":140,
-		"Coeficiente": 1.80,
+		"Coeficiente": 5.80,
 		"poder":9,
 		"vida":1
 	},
 	"Placeholder":{
 		"custo":200,
-		"Coeficiente": 1.20,
-		"poder":9,
-		"vida":1
+		"Coeficiente": 6.20,
+		"poder":90,
+		"vida":10
 	},
 	"Spectra":{
 		"custo":85,
 		"Coeficiente": 3.20,
-		"poder":9,
+		"poder":11,
 		"vida":1
 	},
 	"Teste":{
-		"custo":85,
+		"custo":185,
 		"Coeficiente": 1.20,
 		"poder":9,
 		"vida":1

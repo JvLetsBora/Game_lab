@@ -76,6 +76,10 @@ func _process(delta):
 			rotation_degrees = getDegress(position.x)
 	else:
 		$AnimatedSprite.animation = "morta"
+
+
+
+		
 	
 
 func getDegress(p):
