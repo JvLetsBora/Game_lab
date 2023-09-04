@@ -21,7 +21,7 @@ func _process(delta):
 	y = a*sin(b*x)
 	self.position.x -= 250*delta
 	self.position.y += (300*delta)*(1+Global.nave.Coeficiente)
-	if ( y > 0.2 and y < 0.4):
+	if ( y > 0.2 and y < 0.3):
 		self.scale = Vector2(y,y)
 		self.modulate = Color(1, 1, 1, y)
 	

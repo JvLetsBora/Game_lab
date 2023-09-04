@@ -62,10 +62,13 @@ func _input(event):
 var index = 0
 
 func _insertNavs(navsToInsert):
-	for i in navsToInsert:
+	$debug.text = str(navsToInsert)
+	# nav.png.import
+	for i in navsToInsert: 
 		var new_name = "nav_" + i.get_slice(".", 0)
 		var navTextureRect = TextureRect.new()
-		var pathNav = "res://grafica/Shopping/navs/" + i
+		var pathNav = "res://grafica/Shopping/navs/" + (i.get_slice(".", 0)+"."+i.get_slice(".", 1))
+		print(pathNav)
 		var navTexture: Texture = load(pathNav)
 		navTextureRect.name = new_name
 		navTextureRect.expand = false
@@ -89,7 +92,7 @@ func _loadNavs(path):
 		while fileName != "":
 			if !dir.current_is_dir():
 				var name = String(fileName)
-				if name.find("import") == -1 and name != ".DS_Store":
+				if name.find("import") != -1 and name != ".DS_Store":
 					naves.append(name)
 			fileName = dir.get_next()
 	else:
@@ -138,4 +141,4 @@ func _ordenar():
 		ordem -= 1
 
 func _on_Voltar_pressed():
-	get_tree().change_scene("res://scenes/Inicio.tscn")
+	get_tree().change_scene("./scenes/Inicio.tscn")

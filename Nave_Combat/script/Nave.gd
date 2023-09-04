@@ -95,16 +95,10 @@ func dir_contents(path,anima):
 		while file_name != "":
 			if !dir.current_is_dir():
 				var _name = String(file_name)
-				if _name.find("import") == -1 and _name != ".DS_Store":
-					#print(path+_name," -> ",i)
-					var _path:Texture = load(path+_name)
+				if _name.find("import") != -1 and _name != ".DS_Store":
+					var _path:Texture = load(path+(_name.get_slice(".", 0)+"."+_name.get_slice(".", 1)))
 					$AnimatedSprite.frames.add_frame(anima,_path,i)
 					i += 1
 			file_name = dir.get_next()
 	else:
 		print("An error occurred when trying to access the path.")
-
-
-func getVel(p):
-	var vel =p
-	return vel

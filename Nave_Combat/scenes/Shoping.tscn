@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://grafica/Shopping/Shoping_BG.jpg" type="Texture" id=1]
 [ext_resource path="res://grafica/Shopping/placeLaigth.png" type="Texture" id=2]
@@ -22,6 +22,21 @@ font_path = "res://font/Corbel Bold.ttf"
 [sub_resource type="DynamicFont" id=4]
 size = 24
 font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+override_oversampling = 3.0
+font_path = "res://font/Corbel Bold.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 28
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://font/Corbel Bold.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 28
+font_data = SubResource( 7 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -104,39 +119,39 @@ __meta__ = {
 }
 
 [node name="PowerGun" type="Label" parent="."]
-anchor_left = 0.214
-anchor_top = 0.823
+anchor_left = 0.231
+anchor_top = 0.822
 anchor_right = 0.374
 anchor_bottom = 0.854
-margin_left = 11.92
-margin_top = -1.44006
-margin_right = 11.72
-margin_bottom = -1.12
-custom_fonts/font = SubResource( 4 )
+margin_left = -0.320007
+margin_top = -0.160034
+margin_right = -0.279999
+margin_bottom = -0.119995
+custom_fonts/font = SubResource( 6 )
 text = "99999"
 
 [node name="LiveMax" type="Label" parent="."]
-anchor_left = 0.453
-anchor_top = 0.817
-anchor_right = 0.613
-anchor_bottom = 0.859
-margin_left = 11.84
-margin_top = 6.23999
-margin_right = 11.64
-margin_bottom = -7.52002
-custom_fonts/font = SubResource( 4 )
+anchor_left = 0.472
+anchor_top = 0.822
+anchor_right = 0.615
+anchor_bottom = 0.854
+margin_left = 0.159973
+margin_top = -0.160034
+margin_right = 0.199982
+margin_bottom = -0.119995
+custom_fonts/font = SubResource( 6 )
 text = "99999"
 
 [node name="NavSkipp" type="Label" parent="."]
-anchor_left = 0.693
-anchor_top = 0.817
-anchor_right = 0.852
-anchor_bottom = 0.859
-margin_left = 12.2
-margin_top = 6.23999
-margin_right = 11.8
-margin_bottom = -7.52002
-custom_fonts/font = SubResource( 4 )
+anchor_left = 0.712
+anchor_top = 0.822
+anchor_right = 0.856
+anchor_bottom = 0.854
+margin_left = 0.359985
+margin_top = -0.160034
+margin_right = -0.320068
+margin_bottom = -0.119995
+custom_fonts/font = SubResource( 6 )
 text = "99999"
 
 [node name="GDNaves" type="Control" parent="."]
@@ -146,6 +161,18 @@ anchor_bottom = 0.699
 margin_top = 0.399994
 margin_right = 0.119934
 margin_bottom = 0.279907
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="debug" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 0.999
+margin_right = 4.0
+margin_bottom = 0.279907
+custom_fonts/font = SubResource( 8 )
+autowrap = true
 
 [connection signal="pressed" from="Voltar" to="." method="_on_Voltar_pressed"]
 [connection signal="pressed" from="Buy" to="." method="_on_Buy_pressed"]

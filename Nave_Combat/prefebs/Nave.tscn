@@ -43,7 +43,7 @@ animations = [ {
 "frames": [ ExtResource( 20 ), ExtResource( 21 ), ExtResource( 19 ), ExtResource( 18 ), ExtResource( 3 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 5 ) ],
 "loop": false,
 "name": "morta",
-"speed": 14.0
+"speed": 25.0
 }, {
 "frames": [ ExtResource( 16 ), ExtResource( 23 ), ExtResource( 2 ), ExtResource( 22 ) ],
 "loop": true,

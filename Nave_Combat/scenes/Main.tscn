@@ -1,9 +1,10 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://script/main.gd" type="Script" id=1]
 [ext_resource path="res://grafica/skay.jpg" type="Texture" id=2]
 [ext_resource path="res://prefebs/Nave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://grafica/coin.png" type="Texture" id=4]
+[ext_resource path="res://prefebs/objetos_bg/satelite_obitando.tscn" type="PackedScene" id=5]
 [ext_resource path="res://grafica/skay2.png" type="Texture" id=7]
 [ext_resource path="res://grafica/up.png" type="Texture" id=8]
 [ext_resource path="res://grafica/Down.png" type="Texture" id=9]
@@ -177,7 +178,7 @@ text = "Salve2"
 position = Vector2( -21, 6 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 11 )
-frame = 1
+frame = 4
 playing = true
 
 [node name="Nave" parent="." instance=ExtResource( 3 )]
@@ -196,10 +197,12 @@ offset = Vector2( 300, 2048 )
 
 [node name="terceiro" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2( 1, 0.15 )
-motion_mirroring = Vector2( 0, 2028 )
+motion_mirroring = Vector2( 0, 2500 )
+
+[node name="Node2D" parent="ParallaxBackground/terceiro" instance=ExtResource( 5 )]
 
 [node name="segundo" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 0, 5096 )
+motion_mirroring = Vector2( 0, 4096 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/segundo"]
 scale = Vector2( 1.2, 1 )
@@ -207,7 +210,7 @@ texture = ExtResource( 28 )
 offset = Vector2( 300, 2048 )
 
 [node name="quarto" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2( 0, 9000 )
+motion_mirroring = Vector2( 0, 6000 )
 
 [node name="Sprite" type="Sprite" parent="ParallaxBackground/quarto"]
 modulate = Color( 1, 1, 1, 0.278431 )

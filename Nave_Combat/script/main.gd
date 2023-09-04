@@ -1,7 +1,7 @@
 extends Control
 
 
-var nav_posicoes = []
+#var nav_posicoes = []
 
 var eventLife = 20
 var timer = 0
@@ -50,6 +50,7 @@ var coinY = 0
 var ajusteBtn = 360
 
 func _ready():
+	gerarMeteoro()
 	$AudioMain.volume_db = -60
 	Global.Jogo_on = true
 	$HUD/VoltarMenu.position.x = (get_viewport().size.x/2) - ($HUD/VoltarMenu.normal.get_width()/2)
@@ -175,20 +176,12 @@ func game_events():
 
 
 func _on_TimerMeteoro_timeout():
-
-	if(chuvaMeteoro_on == true and Global.Jogo_on == true):
-		var meteoros1 = Meteoro.instance()
-		var meteoros2 = Meteoro.instance()
-		#meteoros.velocidade += ($Nave.coeficiente*Global.vel)
-		meteoros2.position.x = meteoros2.position.x - meteoros1.position.x
-		meteoros2.tamanho = 0.5
-		add_child(meteoros1)
-		add_child(meteoros2)
+	gerarMeteoro()
 
 
 func _on_TimerParede_timeout():
 	
-	if(Parede_on == true and Global.Jogo_on == true):
+	if(Parede_on == true ):
 		var Paredes = Parede.instance()
 		#Paredes.velocidade  += ($Nave.coeficiente*Global.vel)
 		add_child(Paredes)
@@ -231,24 +224,24 @@ func _on_VoltarMenu_pressed():
 
 
 func _on_HUD_gui_input(event):
-#	if (event is InputEventScreenTouch):
-#		if event.position.x > 400:
-#			_d = true
-#		if event.position.x < 400:
-#			_e = true
 	if (event is InputEventScreenTouch):
-		if (event.pressed == true):
-			nav_posicoes.append(Global.nave["Pos"])
-			update()
-			$Nave.tempo = 0
-			if (btn == false):
-				_e = true
-				_d = false
-				btn = true
-			elif(btn == true):
-				_e = false
-				_d = true
-				btn = false
+		if event.position.x > get_viewport().size.x/2:
+			_d = true
+		if event.position.x < get_viewport().size.x/2:
+			_e = true
+	#if (event is InputEventScreenTouch):
+		#if (event.pressed == true):
+			#nav_posicoes.append(Global.nave["Pos"])
+			#update()
+			#$Nave.tempo = 0
+#			if (btn == false):
+#				_e = true
+#				_d = false
+#				btn = true
+#			elif(btn == true):
+#				_e = false
+#				_d = true
+#				btn = false
 
 func _on_Control_coin_anime():
 	_coinx += 1
@@ -264,3 +257,12 @@ func _on_Control_coin_anime():
 #	pass
 	
 
+func gerarMeteoro():
+	if(chuvaMeteoro_on == true):
+		var meteoros1 = Meteoro.instance()
+		var meteoros2 = Meteoro.instance()
+		#meteoros.velocidade += ($Nave.coeficiente*Global.vel)
+		meteoros2.position.x = meteoros2.position.x - meteoros1.position.x
+		meteoros2.tamanho = 0.5
+		add_child(meteoros1)
+		add_child(meteoros2)

@@ -7,7 +7,7 @@
 [node name="Paredes" type="Node2D"]
 script = ExtResource( 3 )
 
-[node name="Colide_D" type="Area2D" parent="." groups=["Meteoro"]]
+[node name="Colide_D" type="Area2D" parent="." groups=["detrito"]]
 position = Vector2( 531, 0 )
 scale = Vector2( 0.36, 0.36 )
 __meta__ = {
@@ -24,7 +24,7 @@ __meta__ = {
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colide_D"]
 polygon = PoolVector2Array( -513.889, 83.3333, -494.444, 19.4444, -197.222, -155.556, -261.111, -350, -238.889, -350, 622.222, -347.222, 625, 358.333, -263.889, 358.333 )
 
-[node name="Colide_E" type="Area2D" parent="."]
+[node name="Colide_E" type="Area2D" parent="." groups=["detrito"]]
 position = Vector2( 23, 0 )
 scale = Vector2( 0.36, 0.36 )
 __meta__ = {

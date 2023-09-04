@@ -45,6 +45,7 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="Settigns" parent="." instance=ExtResource( 6 )]
+visible = false
 
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.287
@@ -52,11 +53,12 @@ anchor_top = 0.511
 anchor_right = 0.718
 anchor_bottom = 0.607
 margin_left = -0.199997
-margin_top = -0.264038
-margin_right = 0.199982
-margin_bottom = 0.431946
+margin_top = -15.08
+margin_right = 0.200012
+margin_bottom = -14.384
 custom_fonts/font = SubResource( 2 )
 text = "START"
+flat = true
 
 [node name="Shop" type="Button" parent="."]
 anchor_left = 0.287
@@ -64,11 +66,12 @@ anchor_top = 0.707
 anchor_right = 0.718
 anchor_bottom = 0.804
 margin_left = -0.199997
-margin_top = 0.0319824
+margin_top = -103.96
 margin_right = 0.199951
-margin_bottom = -0.296021
+margin_bottom = -104.288
 custom_fonts/font = SubResource( 2 )
 text = "SHOP"
+flat = true
 
 [node name="Fases" type="Button" parent="."]
 anchor_left = 0.287
@@ -76,11 +79,12 @@ anchor_top = 0.304
 anchor_right = 0.718
 anchor_bottom = 0.4
 margin_left = -0.199997
-margin_top = -0.296021
+margin_top = 88.88
 margin_right = 0.199951
-margin_bottom = 0.399994
+margin_bottom = 89.576
 custom_fonts/font = SubResource( 2 )
 text = "MAP"
+flat = true
 
 [node name="audio" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

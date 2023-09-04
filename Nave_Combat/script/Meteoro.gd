@@ -15,14 +15,19 @@ var filho = false
 var zig = true
 var vida
 onready var vida_ = [
-	load("res://grafica/Eventos/CometaExplode/cometa_dan01.png"),
-	load("res://grafica/Eventos/CometaExplode/cometa_dan02.png")
+	load("./grafica/Eventos/CometaExplode/cometa_dan01.png"),
+	load("./grafica/Eventos/CometaExplode/cometa_dan02.png")
 ]
-
+var is_shaking = true
+var shake_duration = 1.3  # Duração da vibração em segundos
+var shake_amplitude = 5.0  # Amplitude da vibração (o quanto a tela vai tremer)
 
 func _ready():
 	Global.scaleMeteoro = get_children()[0].texture.get_size()
 	if filho != true:
+		$Cometa.modulate = Color(1, 1, 1,0.2)
+		$Cometa.scale = Vector2(0.2,0.2)
+		$CollisionShape2D.disabled = true
 		self.position.y = -160
 		rng.randomize()
 		var my_random_number = rng.randf_range(1, 4)
@@ -49,7 +54,7 @@ func _process(delta):
 	if(position.y > get_viewport().size.y + 220 or position.x > get_viewport().size.x + 220 or position.x < -220):
 		queue_free()
 	elif(meteoroVida <= 0): #scale.x < 0.4
-		var explode = load("res://prefebs/explode.tscn")
+		var explode = load("./prefebs/explode.tscn")
 		var EXPLODE = explode.instance()
 		EXPLODE.position = position
 		EXPLODE.scale = scale
@@ -62,6 +67,16 @@ func _process(delta):
 			else:
 				new_detrito(0,delta)
 		queue_free()
+	if is_shaking:
+			if $Cometa.scale.x <= 1.0:
+				$Cometa.scale += Vector2((0.3*delta),(0.3*delta))
+				$Cometa.modulate += Color(0, 0, 0,0.1*delta)
+				start_shake()
+			else:
+				$Cometa.modulate = Color(1, 1, 1,1)
+				is_shaking = false
+				$CollisionShape2D.disabled = false
+				
 	if(Global.Jogo_on == true):
 		if(impacto == true):
 			if(tamanho > 1):
@@ -73,8 +88,11 @@ func _process(delta):
 				position.y += ((velocidade + 2)*delta)*(1+Global.nave.Coeficiente)
 				rotation_degrees += (roda + 80)*delta
 		else:
-			position.y += (velocidade*delta)*(1+Global.nave.Coeficiente)
-			rotation_degrees += (roda+50)*delta
+			if !is_shaking:
+				position.y += (velocidade*delta)*(1+Global.nave.Coeficiente)
+				rotation_degrees += (roda+50)*delta
+			else:
+				position.y += 100*delta
 	if (meteoroVida*100)/vida <= 90 and (meteoroVida*100)/vida >= 75:
 		$Cometa.texture = vida_[0]
 
@@ -95,16 +113,15 @@ func _on_Area2D_area_entered(area):
 	elif(area.is_in_group("coletavel")):
 		area.position += Vector2(1,1)
 		
-	else:
-		impacto = true
-		meteoroVida = 0
+	if(area.is_in_group("detrito")):
+		meteoroVida = -1
 
 
 	
 
 
 func new_detrito(i,delta):
-	var detrito = load("res://prefebs/Meteoro.tscn")
+	var detrito = load("./prefebs/Meteoro.tscn")
 	var DETRITO = detrito.instance()
 	DETRITO.scale = Vector2((tamanho*0.3),(tamanho*0.3)) 
 	DETRITO.roda = (roda*-1)*delta
@@ -122,3 +139,9 @@ func new_detrito(i,delta):
 
 func _on_Timer_timeout():
 	filho = false
+
+func start_shake():
+	if is_shaking:
+		var random_offset = Vector2(rand_range(-shake_amplitude+self.position.x, shake_amplitude+self.position.x), rand_range(-shake_amplitude+self.position.y, shake_amplitude+self.position.y))
+		self.position = random_offset
+
