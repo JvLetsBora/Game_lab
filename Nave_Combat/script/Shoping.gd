@@ -127,11 +127,13 @@ func _on_Buy_pressed():
 	if not get_name in Global.Nav_select:
 		# Adicione o nome da nave selecionada à lista Global.Nav_select
 		Global.Nav_select.append(get_name)
-		
-		# Imprima a lista atualizada
-		print(Global.Nav_select)
 	else:
 		print("Esta nave já foi comprada.")
+	# Imprima a lista atualizada
+	for i in range(len(Global.Nav_select)) :
+		if get_name == Global.Nav_select[i]:
+			Global.id = i
+	#print(Global.Nav_select)
 
 
 func _ordenar():
