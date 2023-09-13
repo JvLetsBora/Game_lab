@@ -224,11 +224,31 @@ func _on_VoltarMenu_pressed():
 
 
 func _on_HUD_gui_input(event):
-	if (event is InputEventScreenTouch):
-		if event.position.x > get_viewport().size.x/2:
+	if (event is InputEventScreenDrag):
+		#print(event.position)
+		#$debug.text = str(event.index)
+#		if event.position.x > get_viewport().size.x/2:
+#			_e = false
+#			_d = true
+#		elif event.position.x < get_viewport().size.x/2:
+#			_d = false
+#			_e = true
+		#print(event.relative.x)
+		if event.relative.x > 0:
+			_e = false
 			_d = true
-		if event.position.x < get_viewport().size.x/2:
+		elif event.relative.x < 0:
+			_d = false
 			_e = true
+
+	elif (event is InputEventScreenTouch):
+		if event.position.x > get_viewport().size.x/2:
+			_e = false
+			_d = true
+		elif event.position.x < get_viewport().size.x/2:
+			_d = false
+			_e = true
+		
 	#if (event is InputEventScreenTouch):
 		#if (event.pressed == true):
 			#nav_posicoes.append(Global.nave["Pos"])
