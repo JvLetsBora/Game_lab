@@ -23,6 +23,7 @@ var tiro_t =0
 var _e = false
 var _d = false
 var btn = false
+var target = Vector2(0,0)
 
 signal coin_anime
 var _coinx = 0
@@ -192,7 +193,7 @@ func _on_TimerParede_timeout():
 
 
 func _on_Reiniciar_pressed():
-	yield(get_tree().create_timer(0.2),"timeout")
+	#yield(get_tree().create_timer(0.2),"timeout")
 	Global.Jogo_on = true
 	get_tree().change_scene("res://scenes/Main.tscn")
 	
@@ -227,27 +228,38 @@ func _on_HUD_gui_input(event):
 	if (event is InputEventScreenDrag):
 		#print(event.position)
 		#$debug.text = str(event.index)
-#		if event.position.x > get_viewport().size.x/2:
+		#if event.position.x > get_viewport().size.x/2:
+		#	_e = false
+		#	_d = true
+		#elif event.position.x < get_viewport().size.x/2:
+		#	_d = false
+		#	_e = true
+		
+		# Seguindo o ponteiro do mouse:
+		#if event.position.x > $Nave.position.x:
+		if event.position.x - $Nave.position.x:
+			_e = false
+			_d = true
+		elif event.position.x - $Nave.position.x < -4:
+			_e = true
+			_d = false
+		elif event.position.x - $Nave.position.x > -4 and event.position.x - $Nave.position.x < 4:
+			_e = true
+			_d = true
+#		if event.relative.x > 0:
 #			_e = false
 #			_d = true
-#		elif event.position.x < get_viewport().size.x/2:
+#		elif event.relative.x < 0:
 #			_d = false
 #			_e = true
-		#print(event.relative.x)
-		if event.relative.x > 0:
-			_e = false
-			_d = true
-		elif event.relative.x < 0:
-			_d = false
-			_e = true
 
-	elif (event is InputEventScreenTouch):
-		if event.position.x > get_viewport().size.x/2:
-			_e = false
-			_d = true
-		elif event.position.x < get_viewport().size.x/2:
-			_d = false
-			_e = true
+	#elif (event is InputEventScreenTouch):
+	#	if event.position.x > get_viewport().size.x/2:
+	#		_e = false
+	#		_d = true
+	#	elif event.position.x < get_viewport().size.x/2:
+	#		_d = false
+	#		_e = true
 		
 	#if (event is InputEventScreenTouch):
 		#if (event.pressed == true):

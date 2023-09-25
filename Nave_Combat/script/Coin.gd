@@ -8,6 +8,8 @@ var impacto = 0
 var desloca = 0
 var a = 1.0
 
+var tempo = 0
+
 func _process(delta):
 	if(position.y > get_viewport().size.y or position.x > get_viewport().size.x-90 or position.x < -90):
 		$CoinCollision.set_deferred("disabled", true)
@@ -24,6 +26,10 @@ func _process(delta):
 		elif position.y <= get_viewport().size.y - ((get_viewport().size.y/100)*90):
 			queue_free()
 		if position.y > 25*(get_viewport().size.y/100) and position.y < 300*(get_viewport().size.y/100):
+			tempo += delta
+			if(tempo > 0.6):
+				$AudioStreamPlayer.volume_db -= 10
+				#print(tempo)
 			a -= 0.01
 			self.modulate = Color(1, 1, 1, a)
 			self.scale.x -= 0.01

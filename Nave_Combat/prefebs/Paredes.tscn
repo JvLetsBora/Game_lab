@@ -1,8 +1,62 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://grafica/colisoes1.png" type="Texture" id=1]
 [ext_resource path="res://grafica/colisoes2.png" type="Texture" id=2]
 [ext_resource path="res://script/ParedesCriador.gd" type="Script" id=3]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Colide_E:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 23, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Colide_D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 531, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "crash"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Colide_E:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 23, 0 ), Vector2( 164, 0 ), Vector2( 23, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Colide_D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 531, 0 ), Vector2( 508, 0 ), Vector2( 531, 0 ) ]
+}
 
 [node name="Paredes" type="Node2D"]
 script = ExtResource( 3 )
@@ -40,6 +94,10 @@ __meta__ = {
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Colide_E"]
 polygon = PoolVector2Array( -702.778, -352.778, 688.889, -352.778, 311.111, -105.556, 344.444, 36.1111, 586.111, 297.222, 586.111, 355.556, -700, 355.556 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 1 )
+anims/crash = SubResource( 2 )
 
 [connection signal="area_entered" from="Colide_D" to="." method="_on_Colide_D_area_entered"]
 [connection signal="area_entered" from="Colide_E" to="." method="_on_Colide_E_area_entered"]

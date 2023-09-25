@@ -25,7 +25,7 @@ var shake_amplitude = 5.0  # Amplitude da vibração (o quanto a tela vai tremer
 func _ready():
 	Global.scaleMeteoro = get_children()[0].texture.get_size()
 	if filho != true:
-		$Cometa.modulate = Color(1, 1, 1,0.2)
+		$Cometa.modulate = Color(0.30, 0.31, 0.36)
 		$Cometa.scale = Vector2(0.2,0.2)
 		$CollisionShape2D.disabled = true
 		self.position.y = -160
@@ -70,7 +70,8 @@ func _process(delta):
 	if is_shaking:
 			if $Cometa.scale.x <= 1.0:
 				$Cometa.scale += Vector2((0.3*delta),(0.3*delta))
-				$Cometa.modulate += Color(0, 0, 0,0.1*delta)
+				$Cometa.modulate += Color(0.1*delta, 0.1*delta, 0.1*delta,0)
+				#print($Cometa.modulate)
 				start_shake()
 			else:
 				$Cometa.modulate = Color(1, 1, 1,1)

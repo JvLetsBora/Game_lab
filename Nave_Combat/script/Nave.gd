@@ -44,20 +44,30 @@ func _process(delta):
 		
 		direcao = direcaoE+direcaoD
 		if(direcao > 0 and position.x < limites_e):
-			if(coeficiente > 0.9):
+			if(coeficiente > 0.8):
 				coeficiente -= (coeficiente)*delta
 				
 			$AnimatedSprite.animation = "andandoD"
+			$Motor_direito.flame_fail = true
+			$Motor_direito2.flame_fail = true
+			$Motor_direito3.on_engine = false
+			$Motor_direito3.flame_fail = true
 			position.x += (velocidade*delta*esquiva)*direcao
 
 			rotation_degrees += tempo*delta
 			if(position.y < limite_baixo):position.y += esquiva
 		
 		if(direcao < 0 and  position.x > limites_d):
-			if(coeficiente > 0.5):
+			if(coeficiente > 1):
 				coeficiente -= (coeficiente)*delta
 				
 			$AnimatedSprite.animation = "andandoE"
+			$Motor_direito.flame_fail = true
+			$Motor_direito2.on_engine = false
+			$Motor_direito2.flame_fail = true
+			$Motor_direito3.flame_fail = true
+
+			
 			position.x += (velocidade*delta*esquiva)*direcao
 			rotation_degrees -= tempo*delta
 			if(position.y < limite_baixo):position.y += esquiva
@@ -70,8 +80,20 @@ func _process(delta):
 			direcaoE = 0
 			direcaoD = 0
 			$AnimatedSprite.animation = "parada"
+			$Motor_direito.on_engine = true
+			$Motor_direito2.on_engine = true
+			$Motor_direito3.on_engine = true
+			
+			$Motor_direito.flame_fail = false
+			$Motor_direito2.flame_fail = false
+			$Motor_direito3.flame_fail = false
+			
+
+			
 			if(position.y > 320):
-				position.y -= 1+coeficiente
+				#print(position)
+				#position.y -= 1+coeficiente
+				pass
 		else:
 			rotation_degrees = getDegress(position.x)
 	else:

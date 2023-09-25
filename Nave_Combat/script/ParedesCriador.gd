@@ -6,12 +6,15 @@ var gira =0
 var aceleracao = 1
 
 func _ready():
-	position.y = - 230
+	position.y = - 240
 	rng.randomize()
 	var my_random_numberE = rng.randf_range(-55,23)
 	var my_random_numberD = rng.randf_range(500,625)
 	gira = rng.randf_range(0.1,-0.1)
-	
+	$AnimationPlayer.get_animation("crash").track_set_key_value(1, 2, Vector2(my_random_numberD,self.position.y+4))
+	$AnimationPlayer.get_animation("crash").track_set_key_value(0, 2, Vector2(my_random_numberE,self.position.y+4))
+	$AnimationPlayer.play("crash")
+
 	$Colide_D.position.x = my_random_numberD
 	$Colide_E.position.x = my_random_numberE
 
@@ -38,3 +41,5 @@ func _on_Colide_E_area_entered(area):
 	if(area.name == "Nave"):
 		Global.Jogo_on = false
 		
+
+
