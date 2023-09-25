@@ -18,6 +18,9 @@ onready var vida_ = [
 	load("./grafica/Eventos/CometaExplode/cometa_dan01.png"),
 	load("./grafica/Eventos/CometaExplode/cometa_dan02.png")
 ]
+
+var deformacao =0
+
 var is_shaking = true
 var shake_duration = 1.3  # Duração da vibração em segundos
 var shake_amplitude = 5.0  # Amplitude da vibração (o quanto a tela vai tremer)
@@ -51,6 +54,7 @@ func _ready():
 		vida = meteoroVida
 
 func _process(delta):
+	$Debug_m.text = str(self.position)
 	if(position.y > get_viewport().size.y + 220 or position.x > get_viewport().size.x + 220 or position.x < -220):
 		queue_free()
 	elif(meteoroVida <= 0): #scale.x < 0.4
@@ -80,11 +84,11 @@ func _process(delta):
 				
 	if(Global.Jogo_on == true):
 		if(impacto == true):
-			if(tamanho > 1):
+			if(deformacao < 1):
 				position.y += (velocidade*delta)*(1+Global.nave.Coeficiente)
 				position.x -= (velocidade + 2)*delta
 				rotation_degrees += (roda + 110)*delta
-			else:
+			elif(deformacao > 1):
 				position.x += velocidade*delta
 				position.y += ((velocidade + 2)*delta)*(1+Global.nave.Coeficiente)
 				rotation_degrees += (roda + 80)*delta
@@ -110,6 +114,7 @@ func _on_Area2D_area_entered(area):
 		meteoroVida -=1
 	elif(area.is_in_group("Meteoro")):
 		impacto = true
+		deformacao = position.x - area.position.x
 		meteoroVida -= 2
 	elif(area.is_in_group("coletavel")):
 		area.position += Vector2(1,1)
@@ -117,6 +122,8 @@ func _on_Area2D_area_entered(area):
 	if(area.is_in_group("detrito")):
 		meteoroVida = -1
 
+func impacto(a,b):
+	pass
 
 	
 

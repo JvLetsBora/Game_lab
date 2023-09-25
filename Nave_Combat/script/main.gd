@@ -23,7 +23,6 @@ var tiro_t =0
 var _e = false
 var _d = false
 var btn = false
-var target = Vector2(0,0)
 
 signal coin_anime
 var _coinx = 0
@@ -223,9 +222,9 @@ func _on_VoltarMenu_pressed():
 	get_tree().change_scene("res://scenes/Inicio.tscn") 
 
 
-
 func _on_HUD_gui_input(event):
-	if (event is InputEventScreenDrag):
+	$debug.text = str(event)
+	if (event is InputEventScreenDrag or event is InputEventScreenTouch):
 		#print(event.position)
 		#$debug.text = str(event.index)
 		#if event.position.x > get_viewport().size.x/2:
@@ -237,7 +236,7 @@ func _on_HUD_gui_input(event):
 		
 		# Seguindo o ponteiro do mouse:
 		#if event.position.x > $Nave.position.x:
-		if event.position.x - $Nave.position.x:
+		if event.position.x - $Nave.position.x > 4:
 			_e = false
 			_d = true
 		elif event.position.x - $Nave.position.x < -4:
