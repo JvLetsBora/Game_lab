@@ -4,7 +4,7 @@
 resource_name = "BandPassFilter"
 
 [resource]
-bus/0/volume_db = -10.5185
+bus/0/volume_db = -33.989
 bus/1/name = "Coin"
 bus/1/solo = false
 bus/1/mute = false

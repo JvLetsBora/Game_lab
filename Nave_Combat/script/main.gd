@@ -18,11 +18,15 @@ var fase = "01"
 var municao = 10
 var a = 0
 var kmPercorrido = 0
+var btn = false
+
 var atirando = false
 var tiro_t =0
 var _e = false
 var _d = false
-var btn = false
+var target = null
+var direita = false
+var esquerda = false
 
 signal coin_anime
 var _coinx = 0
@@ -83,6 +87,18 @@ func _process(delta):
 		a += delta
 		Global.nave.Pos = $Nave.position
 		Global.nave.Coeficiente = $Nave.coeficiente
+		if target:
+			if $Nave.position.x - 20 > target.x: 
+				_e = true
+				_d = false
+			elif $Nave.position.x + 20 < target.x:
+				_e = false
+				_d = true
+			elif $Nave.position.x +20 > target.x and $Nave.position.x -20 < target.x:
+				_e = true
+				_d = true
+
+
 		$HUD/km.text = str(Global.nave.Coeficiente)+" K/s"
 		kmPercorrido += 1100
 		if (a >=2):
@@ -159,7 +175,7 @@ func _process(delta):
 			$HUD/score.text = str(kmPercorrido) + " Km"
 		$TimerMeteoro.stop()
 		$TimerParede.stop()
-
+#	update()
 
 
 func game_events():
@@ -236,15 +252,7 @@ func _on_HUD_gui_input(event):
 		
 		# Seguindo o ponteiro do mouse:
 		#if event.position.x > $Nave.position.x:
-		if event.position.x - $Nave.position.x > 4:
-			_e = false
-			_d = true
-		elif event.position.x - $Nave.position.x < -4:
-			_e = true
-			_d = false
-		elif event.position.x - $Nave.position.x > -4 and event.position.x - $Nave.position.x < 4:
-			_e = true
-			_d = true
+		target = event.position
 #		if event.relative.x > 0:
 #			_e = false
 #			_d = true
@@ -278,15 +286,20 @@ func _on_Control_coin_anime():
 	_coinx += 1
 	$HUD/Coins_tex.text = str(_coinx)
 
-#func draw_circle_arc(pos):
+#func ratangulo_area(pos):
 #	var color = Color(1.0, 0.0, 0.0)
-#	draw_circle(pos,4,color)
+#	var size = Vector2(get_viewport().size.x-pos.x + 20,60)
+#	pos.x = pos.x + 20
+	
+#	draw_rect(Rect2(pos,size), color, true, 1.0, false)
+#	var size_2 = Vector2(get_viewport().size.x-pos.x - 20,60)
+#	pos.x = 0
+#	draw_rect(Rect2(pos,size_2), color, true, 1.0, false)
 
 #func _draw():
-#	for pos in nav_posicoes:
-#		draw_circle_arc(pos)
-#	pass
-	
+#	ratangulo_area($Nave.position)
+
+
 
 func gerarMeteoro():
 	if(chuvaMeteoro_on == true):
