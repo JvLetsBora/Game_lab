@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Obsidian_IDLE_01.png-cd1bd2ddad7f7cee487030b96622402d.stex"
+path="res://.import/Obsidian_IDLE_01.png-6aaf722d5bbc7c673fc2733c56ebe14c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grafica/NavsTexture/Obsidian/idle/Obsidian_IDLE_01.png"
-dest_files=[ "res://.import/Obsidian_IDLE_01.png-cd1bd2ddad7f7cee487030b96622402d.stex" ]
+source_file="res://grafica/NavsTexture/Obsidian/IDLE/Obsidian_IDLE_01.png"
+dest_files=[ "res://.import/Obsidian_IDLE_01.png-6aaf722d5bbc7c673fc2733c56ebe14c.stex" ]
 
 [params]
 

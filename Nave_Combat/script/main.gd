@@ -239,7 +239,7 @@ func _on_VoltarMenu_pressed():
 
 
 func _on_HUD_gui_input(event):
-	$debug.text = str(event)
+	#$debug.text = str(event)
 	if (event is InputEventScreenDrag or event is InputEventScreenTouch):
 		#print(event.position)
 		#$debug.text = str(event.index)
