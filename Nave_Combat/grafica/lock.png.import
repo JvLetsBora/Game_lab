@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Placeholder.png-a9763d0997b8f8986659d5f27b7033e8.stex"
+path="res://.import/lock.png-a40f7f39137bb92399844742397b5164.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://grafica/Shopping/navs/Placeholder.png"
-dest_files=[ "res://.import/Placeholder.png-a9763d0997b8f8986659d5f27b7033e8.stex" ]
+source_file="res://grafica/lock.png"
+dest_files=[ "res://.import/lock.png-a40f7f39137bb92399844742397b5164.stex" ]
 
 [params]
 

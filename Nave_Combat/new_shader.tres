@@ -1,0 +1,33 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform sampler2D locked_icon : hint_black;
+uniform float intensity : hint_range(0.0, 1.0);
+uniform float icon_size : hint_range(0.0, 1.0);
+
+void fragment() {
+    vec4 original_color = texture(TEXTURE, UV);
+    COLOR = original_color;
+
+    vec4 darker_color = mix(original_color, original_color * vec4(0.3, 0.3, 0.3, 1.0), intensity);
+
+    // Define o tamanho fixo do ícone (64x64)
+    vec2 icon_size_fixed = vec2((0.35*icon_size), (0.25*icon_size));
+    
+    // Calcula a coordenada UV do ícone centralizado
+    vec2 icon_uv = (UV - 0.5) / icon_size_fixed + 0.5;
+
+    // Verifica se o pixel está na área do ícone de cadeado
+    if (icon_uv.x >= 0.0 && icon_uv.x <= 1.0 &&
+        icon_uv.y >= 0.0 && icon_uv.y <= 1.0) {
+        vec4 icon_color = texture(locked_icon, icon_uv);
+        
+        // Mistura a cor do ícone com a cor original, considerando o canal alfa do ícone
+        COLOR = mix(original_color, icon_color, icon_color.a);
+    } else {
+        COLOR = darker_color;
+    }
+}
+"

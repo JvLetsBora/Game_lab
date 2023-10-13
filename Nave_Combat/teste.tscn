@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://TESTE_teste.gd" type="Script" id=1]
+[ext_resource path="res://new_shader.tres" type="Shader" id=2]
+[ext_resource path="res://grafica/Shopping/navs/Normal.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/intensity = null
+shader_param/icon_size = null
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
@@ -10,5 +17,13 @@ margin_left = 532.0
 margin_top = 620.0
 margin_right = 594.0
 margin_bottom = 642.0
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+material = SubResource( 1 )
+margin_left = 198.0
+margin_top = 399.0
+margin_right = 511.0
+margin_bottom = 782.0
+texture = ExtResource( 3 )
 
 [connection signal="button_down" from="Button" to="." method="_on_Button_button_down"]

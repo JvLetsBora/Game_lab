@@ -25,31 +25,36 @@ var allNavs = {
 		"custo":0,
 		"Coeficiente": 2.20,
 		"poder":9,
-		"vida":1
+		"vida":1,
+		"color_machine":0
 	},
 	"Obsidian":{
 		"custo":140,
 		"Coeficiente": 5.80,
 		"poder":9,
-		"vida":1
+		"vida":1,
+		"color_machine": 0.11
 	},
 	"Placeholder":{
 		"custo":200,
 		"Coeficiente": 6.20,
 		"poder":90,
-		"vida":10
+		"vida":10,
+		"color_machine":0.8
 	},
 	"Spectra":{
 		"custo":85,
 		"Coeficiente": 3.20,
 		"poder":11,
-		"vida":1
+		"vida":1,
+		"color_machine": -0.28
 	},
 	"Teste":{
 		"custo":185,
 		"Coeficiente": 1.20,
 		"poder":9,
-		"vida":1
+		"vida":1,
+		"color_machine": -0.8
 	}
 }
 

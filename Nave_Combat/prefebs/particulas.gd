@@ -8,6 +8,11 @@ extends Node2D
 export var on_engine = false
 export var flame_fail = false
 
+
+func _ready():
+	#Global.allNavs[Global.Nav_select[Global.id]]["Coeficiente"]
+	$Particles2D.hue_variation = Global.allNavs[Global.Nav_select[Global.id]].color_machine
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if flame_fail:

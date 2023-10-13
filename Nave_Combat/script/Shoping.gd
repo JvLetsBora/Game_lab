@@ -7,6 +7,8 @@ export var padding = 50
 var emFoco: String = ""
 var a:float = 0.0
 
+
+
 func _ready():
 	newView = false
 	_loadNavs("res://grafica/Shopping/navs/")

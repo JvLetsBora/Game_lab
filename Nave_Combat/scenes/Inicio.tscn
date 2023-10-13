@@ -1,11 +1,14 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://grafica/ShopView/Piso.png" type="Texture" id=1]
 [ext_resource path="res://grafica/ShopView/Pilares.png" type="Texture" id=2]
 [ext_resource path="res://script/Inicio.gd" type="Script" id=3]
-[ext_resource path="res://e.jpg" type="Texture" id=4]
+[ext_resource path="res://prefebs/objetos_bg/satelite_obitando.tscn" type="PackedScene" id=4]
 [ext_resource path="res://musicas/on_play (online-audio-converter.com).wav" type="AudioStream" id=5]
 [ext_resource path="res://prefebs/Settigns.tscn" type="PackedScene" id=6]
+[ext_resource path="res://grafica/skay3.png" type="Texture" id=7]
+[ext_resource path="res://grafica/skay2.png" type="Texture" id=8]
+[ext_resource path="res://grafica/skay.jpg" type="Texture" id=9]
 
 [sub_resource type="DynamicFontData" id=1]
 font_path = "res://font/dirtyoldtown.ttf"
@@ -45,16 +48,48 @@ __meta__ = {
 "_edit_vertical_guides_": [ 304.0, 516.0 ]
 }
 
-[node name="back_1" type="TextureRect" parent="."]
-anchor_right = 1.0
-anchor_bottom = 1.0
-texture = ExtResource( 4 )
-expand = true
+[node name="back_1" type="Control" parent="."]
+margin_right = 720.0
+margin_bottom = 1280.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="back_1"]
+
+[node name="primeiro" type="ParallaxLayer" parent="back_1/ParallaxBackground"]
+motion_mirroring = Vector2( 0, 2048 )
+
+[node name="Sprite" type="Sprite" parent="back_1/ParallaxBackground/primeiro"]
+scale = Vector2( 1.2, 1 )
+texture = ExtResource( 9 )
+offset = Vector2( 300, 2048 )
+
+[node name="terceiro" type="ParallaxLayer" parent="back_1/ParallaxBackground"]
+motion_scale = Vector2( 1, 0.15 )
+motion_mirroring = Vector2( 0, 1250 )
+
+[node name="Node2D" parent="back_1/ParallaxBackground/terceiro" instance=ExtResource( 4 )]
+
+[node name="segundo" type="ParallaxLayer" parent="back_1/ParallaxBackground"]
+motion_mirroring = Vector2( 0, 4096 )
+
+[node name="Sprite" type="Sprite" parent="back_1/ParallaxBackground/segundo"]
+scale = Vector2( 1.2, 1 )
+texture = ExtResource( 7 )
+offset = Vector2( 300, 2048 )
+
+[node name="quarto" type="ParallaxLayer" parent="back_1/ParallaxBackground"]
+motion_mirroring = Vector2( 0, 3000 )
+
+[node name="Sprite" type="Sprite" parent="back_1/ParallaxBackground/quarto"]
+modulate = Color( 1, 1, 1, 0.278431 )
+scale = Vector2( 1.2, 1 )
+texture = ExtResource( 8 )
+offset = Vector2( 300.494, 2048.11 )
 
 [node name="back_2" type="TextureRect" parent="."]
 anchor_right = 1.001
 anchor_bottom = 1.0
 margin_right = 0.279968
+rect_pivot_offset = Vector2( -139, 642 )
 texture = ExtResource( 1 )
 expand = true
 

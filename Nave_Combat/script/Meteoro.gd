@@ -12,7 +12,6 @@ var impacto = false
 var roda = 0
 var meteoroVida = 10
 var filho = false
-var zig = true
 var vida
 onready var vida_ = [
 	load("./grafica/Eventos/CometaExplode/cometa_dan01.png"),
@@ -43,8 +42,6 @@ func _ready():
 		position.x = posicaoInicial + my_random_number
 		my_random_number = rng.randf_range(-1,1)
 		roda = my_random_number1*my_random_number
-	else:
-		$Timer.start()
 	Global.velMeteoro = velocidade
 	if(tamanho < 1):
 		meteoroVida = 6
@@ -87,7 +84,7 @@ func _process(delta):
 			if(deformacao < 1):
 				position.y += (velocidade*delta)*(1+Global.nave.Coeficiente)
 				position.x -= (velocidade + 2)*delta
-				rotation_degrees += (roda + 110)*delta
+				rotation_degrees -= (roda + 80)*delta
 			elif(deformacao > 1):
 				position.x += velocidade*delta
 				position.y += ((velocidade + 2)*delta)*(1+Global.nave.Coeficiente)
@@ -96,6 +93,7 @@ func _process(delta):
 			if !is_shaking:
 				position.y += (velocidade*delta)*(1+Global.nave.Coeficiente)
 				rotation_degrees += (roda+50)*delta
+				rotation_degrees += (80*roda)*delta
 			else:
 				position.y += 100*delta
 	if (meteoroVida*100)/vida <= 90 and (meteoroVida*100)/vida >= 75:
@@ -122,10 +120,6 @@ func _on_Area2D_area_entered(area):
 	if(area.is_in_group("detrito")):
 		meteoroVida = -1
 
-func impacto(a,b):
-	pass
-
-	
 
 
 func new_detrito(i,delta):
@@ -134,19 +128,10 @@ func new_detrito(i,delta):
 	DETRITO.scale = Vector2((tamanho*0.3),(tamanho*0.3)) 
 	DETRITO.roda = (roda*-1)*delta
 	DETRITO.impacto = true
-	if(zig==true):
-		DETRITO.velocidade = 130 + i
-		zig = false
-	else:
-		DETRITO.velocidade = -180 - i
-		zig = true
 	DETRITO.filho = true
 	DETRITO.position = self.position + Vector2(i*30,i*20)
 	get_parent().add_child(DETRITO)
 
-
-func _on_Timer_timeout():
-	filho = false
 
 func start_shake():
 	if is_shaking:

@@ -6,7 +6,7 @@ var gira =0
 var aceleracao = 1
 
 func _ready():
-	position.y = - 240
+	position.y = - 140*(1+Global.nave.Coeficiente)
 	rng.randomize()
 	var my_random_numberE = rng.randf_range(-55,23)
 	var my_random_numberD = rng.randf_range(500,625)
