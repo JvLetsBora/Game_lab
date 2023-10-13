@@ -6,8 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 2 )
-shader_param/intensity = null
-shader_param/icon_size = null
+shader_param/disable = true
 
 [node name="Node" type="Node"]
 script = ExtResource( 1 )
