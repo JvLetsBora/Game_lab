@@ -22,7 +22,7 @@ Global="*res://script/Global.gd"
 
 window/size/width=720
 window/size/height=1280
-window/handheld/orientation="sensor"
+window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep_width"
 
