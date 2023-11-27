@@ -4,7 +4,7 @@
 code = "shader_type canvas_item;
 
 
-const float intensity = 0.5;
+const float intensity = 0.65;
 const float icon_size = 0.3;
 uniform sampler2D locked_icon;
 

@@ -4,7 +4,7 @@ const SAVE_GAME_PATH := "res://save.json"
 
 var _file := File.new()
 
-var dinheiro = 880
+var dinheiro = 100
 var pontos = 0
 var Jogo_on = true
 var nave = {

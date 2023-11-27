@@ -1,4 +1,4 @@
-extends Area2D
+extends "res://script/coletavel.gd"
 
 export var balaVel = 100
 signal bateu
@@ -11,9 +11,7 @@ var a = 1.0
 var tempo = 0
 
 func _process(delta):
-	if(position.y > get_viewport().size.y or position.x > get_viewport().size.x-90 or position.x < -90):
-		$CoinCollision.set_deferred("disabled", true)
-		queue_free()
+	area_limite($CoinCollision,Vector2(90,0))
 		
 	rotation_degrees += rodaNormal
 	if bateu == true:

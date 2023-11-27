@@ -1,10 +1,11 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://script/main.gd" type="Script" id=1]
 [ext_resource path="res://grafica/skay.jpg" type="Texture" id=2]
 [ext_resource path="res://prefebs/Nave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://grafica/coin.png" type="Texture" id=4]
 [ext_resource path="res://prefebs/objetos_bg/satelite_obitando.tscn" type="PackedScene" id=5]
+[ext_resource path="res://prefebs/powerUp/impulso.tscn" type="PackedScene" id=6]
 [ext_resource path="res://grafica/skay2.png" type="Texture" id=7]
 [ext_resource path="res://grafica/up.png" type="Texture" id=8]
 [ext_resource path="res://grafica/Down.png" type="Texture" id=9]
@@ -241,6 +242,10 @@ margin_bottom = 0.279907
 custom_fonts/font = SubResource( 13 )
 autowrap = true
 
+[node name="Area2D" parent="." instance=ExtResource( 6 )]
+position = Vector2( 194.4, -211.25 )
+
+[connection signal="Nave_impulso" from="." to="." method="_on_Control_Nave_impulso"]
 [connection signal="coin_anime" from="." to="." method="_on_Control_coin_anime"]
 [connection signal="gui_input" from="HUD" to="." method="_on_HUD_gui_input"]
 [connection signal="pressed" from="HUD/Reiniciar" to="." method="_on_Reiniciar_pressed"]

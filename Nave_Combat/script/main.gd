@@ -29,6 +29,8 @@ var direita = false
 var esquerda = false
 
 signal coin_anime
+signal Nave_impulso
+
 var _coinx = 0
 
 var bg_eventos = [
@@ -39,7 +41,7 @@ var evento = {
 	0:"01",
 	1:"02"
 }
-
+#Nave_impulso
 var coinFormacao = ""
 var gerarFormacao = {
 	0: "linha",
@@ -310,3 +312,7 @@ func gerarMeteoro():
 		meteoros2.tamanho = 0.5
 		add_child(meteoros1)
 		add_child(meteoros2)
+
+
+func _on_Control_Nave_impulso():
+	print("Salve Rapesase")

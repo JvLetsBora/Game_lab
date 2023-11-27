@@ -2,11 +2,14 @@ extends Control
 
 var naves = []
 var newView = false
-export var padding = 50
+export var padding = 100
+var get_name = null
 
 var emFoco: String = ""
 var a:float = 0.0
 
+var texture_new:Texture = preload("res://grafica/lock.png")
+var shader = preload("res://new_shader.tres")
 
 
 func _ready():
@@ -19,6 +22,14 @@ func _ready():
 	modulate = Color(0, 0, 0)
 
 func _process(delta):
+	if get_name:
+		if not get_name in Global.Nav_select:
+			$TextureRect2/Custo.text = get_name + " R$ "+str(Global.allNavs[get_name].custo )+",00"
+		elif Global.Nav_select[Global.id] == get_name:
+			$TextureRect2/Custo.text = "selecionada"
+		else:
+			$TextureRect2/Custo.text = "selecionar"
+
 	$SeuGanho.text = "R$ " + str(Global.dinheiro) + ",00"
 	if (0.9 <= a and a <= 1.0):
 		modulate = Color(1, 1, 1)
@@ -35,6 +46,9 @@ func _process(delta):
 			
 			$GDNaves.move_child(nave, $GDNaves.get_child_count() - 1)
 			emFoco = nave.name
+			get_name = emFoco.get_slice("_", 1)
+			
+
 		else:
 			nave.modulate = Color(0.588235, 0.588235, 0.588235)
 			if nave.rect_scale.x >= 1:
@@ -47,8 +61,7 @@ func _process(delta):
 		else:
 			newView = true
 	
-	if !emFoco.empty():
-		var get_name = emFoco.get_slice("nav_", 1)
+	if !emFoco.empty() and get_name:
 		$PowerGun.text = str(Global.allNavs[get_name].poder)
 		$LiveMax.text = str(Global.allNavs[get_name].vida)
 		$NavSkipp.text = str(Global.allNavs[get_name].Coeficiente)
@@ -70,7 +83,7 @@ func _insertNavs(navsToInsert):
 		var new_name = "nav_" + i.get_slice(".", 0)
 		var navTextureRect = TextureRect.new()
 		var pathNav = "res://grafica/Shopping/navs/" + (i.get_slice(".", 0)+"."+i.get_slice(".", 1))
-		print(pathNav)
+		#print(pathNav)
 		var navTexture: Texture = load(pathNav)
 		navTextureRect.name = new_name
 		navTextureRect.expand = false
@@ -83,6 +96,10 @@ func _insertNavs(navsToInsert):
 		navTextureRect.rect_pivot_offset.x = 156
 		navTextureRect.rect_pivot_offset.y = 186
 		navTextureRect.rect_position.x += 120*index
+		if not i.get_slice(".", 0) in Global.Nav_select:
+			navTextureRect.material = ShaderMaterial.new()
+			navTextureRect.material.shader = shader
+			navTextureRect.material.set_shader_param("locked_icon",texture_new)
 		index +=1
 		$GDNaves.add_child(navTextureRect)
 
@@ -108,7 +125,6 @@ func _isCardSelected(card):
 
 func _calculatePosition(obj, opera, k, axis):
 	var diferencaPs = 0
-	
 	if axis == "x":
 		if opera == "-":
 			diferencaPs = obj.rect_position.x - obj.texture.get_size().x / 2 + k
@@ -123,19 +139,19 @@ func _calculatePosition(obj, opera, k, axis):
 	return diferencaPs
 
 func _on_Buy_pressed():
-	var get_name = emFoco.get_slice("nav_", 1)
-	
 	# Verifique se a nave não está na lista Global.Nav_select
 	if not get_name in Global.Nav_select:
-		# Adicione o nome da nave selecionada à lista Global.Nav_select
-		Global.Nav_select.append(get_name)
+		# Adicione o nome da nave selecionada à lista Global.Nav_select 
+		if Global.dinheiro >= Global.allNavs[get_name].custo:
+			Global.dinheiro -= Global.allNavs[get_name].custo
+			$GDNaves.get_children()[$GDNaves.get_child_count()-1].material = null
+			Global.Nav_select.append(get_name)
 	else:
 		print("Esta nave já foi comprada.")
-	# Imprima a lista atualizada
+
 	for i in range(len(Global.Nav_select)) :
 		if get_name == Global.Nav_select[i]:
 			Global.id = i
-	#print(Global.Nav_select)
 
 
 func _ordenar():
