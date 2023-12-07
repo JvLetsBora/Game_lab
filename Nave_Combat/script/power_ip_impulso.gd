@@ -8,10 +8,10 @@ func _ready():
 
 func _blink():
 	# Inverter o valor da propriedade modulate para alternar entre visível e invisível
-	if self.modulate == Color(1, 1, 1, 1):
+	if self.modulate == Color(1, 3.2, 1, 1):
 		self.modulate = Color(1, 1, 1, 0)  # Tornar o objeto invisível
 	else:
-		self.modulate = Color(1, 1, 1, 1)  # Tornar o objeto visível
+		self.modulate = Color(1, 3.2, 1, 1)  # Tornar o objeto visível
 
 func _process(delta):
 	_blink()

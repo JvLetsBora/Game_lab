@@ -186,7 +186,6 @@ text = "Salve2"
 position = Vector2( -21, 6 )
 scale = Vector2( 0.5, 0.5 )
 frames = SubResource( 11 )
-frame = 2
 playing = true
 
 [node name="Nave" parent="." instance=ExtResource( 3 )]
