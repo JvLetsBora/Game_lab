@@ -7,14 +7,18 @@ var eventLife = 20
 var timer = 0
 var timerEvent = 0
 var timerEvent2 = 0
+
 var coin = preload("res://prefebs/Coin.tscn")
+
 var Tiro = preload("res://prefebs/Tiro_c.tscn")
+
 var Meteoro = preload("res://prefebs/Meteoro.tscn")
 var Parede = preload("res://prefebs/Paredes.tscn")
 
 var chuvaMeteoro_on = false
 var Parede_on = false
 var fase = "01"
+
 var municao = 10
 var a = 0
 var kmPercorrido = 0
@@ -243,63 +247,12 @@ func _on_VoltarMenu_pressed():
 func _on_HUD_gui_input(event):
 	#$debug.text = str(event)
 	if (event is InputEventScreenDrag or event is InputEventScreenTouch):
-		#print(event.position)
-		#$debug.text = str(event.index)
-		#if event.position.x > get_viewport().size.x/2:
-		#	_e = false
-		#	_d = true
-		#elif event.position.x < get_viewport().size.x/2:
-		#	_d = false
-		#	_e = true
-		
-		# Seguindo o ponteiro do mouse:
-		#if event.position.x > $Nave.position.x:
 		target = event.position
-#		if event.relative.x > 0:
-#			_e = false
-#			_d = true
-#		elif event.relative.x < 0:
-#			_d = false
-#			_e = true
 
-	#elif (event is InputEventScreenTouch):
-	#	if event.position.x > get_viewport().size.x/2:
-	#		_e = false
-	#		_d = true
-	#	elif event.position.x < get_viewport().size.x/2:
-	#		_d = false
-	#		_e = true
-		
-	#if (event is InputEventScreenTouch):
-		#if (event.pressed == true):
-			#nav_posicoes.append(Global.nave["Pos"])
-			#update()
-			#$Nave.tempo = 0
-#			if (btn == false):
-#				_e = true
-#				_d = false
-#				btn = true
-#			elif(btn == true):
-#				_e = false
-#				_d = true
-#				btn = false
 
 func _on_Control_coin_anime():
 	_coinx += 1
 	$HUD/Coins_tex.text = str(_coinx)
-
-#func ratangulo_area(pos):
-#	var color = Color(1.0, 0.0, 0.0)
-#	var size = Vector2(get_viewport().size.x-pos.x + 20,60)
-#	pos.x = pos.x + 20
-	
-#	draw_rect(Rect2(pos,size), color, true, 1.0, false)
-#	var size_2 = Vector2(get_viewport().size.x-pos.x - 20,60)
-#	pos.x = 0
-#	draw_rect(Rect2(pos,size_2), color, true, 1.0, false)
-
-#func _draw():
-#	ratangulo_area($Nave.position)
 
 
 
